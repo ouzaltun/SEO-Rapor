@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kapsamlı SEO Denetim Raporu İnfografiği - bilgenkatipoglu.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8f9fa; /* Slightly off-white background */
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 300px;
+        max-height: 400px;
+      }
+      @media (min-width: 768px) {
+        .chart-container {
+          height: 350px;
+        }
+      }
+      .flow-arrow::after {
+        content: "→";
+        font-size: 2rem;
+        color: #0582ca;
+        line-height: 1;
+        margin: 0 1rem;
+      }
+      .flow-step:last-child .flow-arrow::after {
+        content: "";
+      }
+      .checklist-item {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: #ffebeb;
+        color: #c53030;
+        margin-bottom: 0.5rem;
+      }
+      .checklist-item::before {
+        content: "✗";
+        font-weight: bold;
+        margin-right: 0.75rem;
+        font-size: 1.25rem;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <div class="container mx-auto p-4 md:p-8">
+      <header class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-[#006494] mb-2">
+          Kapsamlı SEO Sağlık Karnesi
+        </h1>
+        <p class="text-xl text-[#0582CA]">bilgenkatipoglu.com</p>
+        <p class="text-sm text-gray-500">Rapor Tarihi: 03 Temmuz 2024</p>
+      </header>
+
+      <main class="space-y-12">
+        <section
+          id="overview"
+          class="bg-white p-6 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-6"
+        >
+          <div class="w-full md:w-1/3">
+            <div class="chart-container h-[250px] md:h-[200px]">
+              <canvas id="mainScoreChart"></canvas>
+            </div>
+          </div>
+          <div class="w-full md:w-2/3 text-center md:text-left">
+            <h2 class="text-3xl font-bold text-[#006494] mb-2">
+              Genel Performans Skoru: Kritik Seviyede
+            </h2>
+            <p class="text-gray-600">
+              Site, PageSpeed Insights mobil testinden 100 üzerinden yalnızca 46
+              puan alarak performans konusunda ciddi zafiyetler göstermektedir.
+              Bu düşük skor, hem kullanıcı deneyimini olumsuz etkilemekte hem de
+              Google sıralamalarını doğrudan aşağı çekmektedir. Özellikle
+              **Önemli Web Verileri (Core Web Vitals)** testinden geçememesi
+              acil müdahale gerektiğini göstermektedir.
+            </p>
+          </div>
+        </section>
+
+        <section id="critical-numbers">
+          <h2 class="text-3xl font-bold text-center text-[#006494] mb-6">
+            Kritik Sayısal Veriler
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+              <h3 class="text-xl font-bold text-[#006494] mb-4">
+                Kod Optimizasyon Sorunu
+              </h3>
+              <p class="text-7xl font-bold text-[#FF6B6B]">56</p>
+              <p class="text-gray-600 mt-2">
+                adet küçültülmemiş JS/CSS dosyası siteyi yavaşlatıyor.
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+              <h3 class="text-xl font-bold text-[#006494] mb-4">
+                Meta Açıklama Eksikliği
+              </h3>
+              <p class="text-7xl font-bold text-[#FF6B6B]">56</p>
+              <p class="text-gray-600 mt-2">
+                sayfanın meta açıklaması bulunmuyor, tıklanma oranı düşüyor.
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+              <h3 class="text-xl font-bold text-[#006494] mb-4">
+                Büyük Boyutlu Resimler
+              </h3>
+              <p class="text-7xl font-bold text-[#FF6B6B]">13+</p>
+              <p class="text-gray-600 mt-2">
+                adet yüksek boyutlu resim sayfa yükünü artırıyor.
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+              <h3 class="text-xl font-bold text-[#006494] mb-4">
+                Eksik Alt Metinler
+              </h3>
+              <p class="text-7xl font-bold text-[#FF6B6B]">6+</p>
+              <p class="text-gray-600 mt-2">
+                resmin alt metni yok, görsel SEO ve erişilebilirlik zayıf.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="technical-seo"
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+        >
+          <div class="bg-white p-6 rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-4">
+              Teknik SEO Sağlık Taraması
+            </h2>
+            <p class="text-center text-gray-600 mb-6">
+              Sitenin teknik altyapısındaki temel zafiyetler, arama motorlarının
+              siteyi verimli taramasını engelliyor. Sağlık puanları 10 üzerinden
+              değerlendirilmiştir.
+            </p>
+            <div class="chart-container">
+              <canvas id="technicalRadarChart"></canvas>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-4">
+              Başlık Hiyerarşisi Sorunları
+            </h2>
+            <p class="text-center text-gray-600 mb-6">
+              Sayfaların ana konusunu belirten H1 etiketlerinde kritik hatalar
+              mevcut. Bu, SEO'nun temel taşlarından birinin yanlış
+              kullanıldığını gösterir.
+            </p>
+            <div class="chart-container">
+              <canvas id="headingsChart"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section id="eeat-ux">
+          <h2 class="text-3xl font-bold text-center text-[#006494] mb-6">
+            Kullanıcı Deneyimi ve Güven (E-E-A-T) Analizi
+          </h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-2xl shadow-lg">
+              <h3 class="text-xl font-bold text-[#006494] mb-4">
+                Yasal Sayfa Kontrol Listesi
+              </h3>
+              <div class="checklist-item">Gizlilik Politikası</div>
+              <div class="checklist-item">KVKK Bilgilendirme</div>
+              <div class="checklist-item">Kullanım Koşulları</div>
+              <div class="checklist-item">Sık Sorulan Sorular</div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg">
+              <h3 class="text-xl font-bold text-[#006494] mb-4">
+                E-E-A-T Yazar Sayfası
+              </h3>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="text-center border-r pr-4">
+                  <h4 class="font-semibold text-red-600">MEVCUT DURUM</h4>
+                  <p class="text-gray-600 text-sm">
+                    Basit, yetersiz ve yazarın uzmanlığını kanıtlamayan bir
+                    sayfa yapısı.
+                  </p>
+                </div>
+                <div class="text-center">
+                  <h4 class="font-semibold text-green-600">OLMASI GEREKEN</h4>
+                  <p class="text-gray-600 text-sm">
+                    Detaylı biyografi, uzmanlık alanları, sertifikalar ve
+                    akademik yayınları içeren kapsamlı bir sayfa.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg">
+              <h3 class="text-xl font-bold text-center text-[#006494] mb-4">
+                Sayfa Şablonu İyileştirmeleri
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <h4 class="font-semibold mb-2">Header</h4>
+                  <p class="text-sm text-red-600 mb-1">
+                    <strong>Mevcut:</strong> İşlevsiz linkler, tıklanabilir
+                    olmayan telefon no.
+                  </p>
+                  <p class="text-sm text-green-600">
+                    <strong>Öneri:</strong> "Randevu Al" butonu, tıklanabilir
+                    telefon no.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold mb-2">Blog Sayfası</h4>
+                  <p class="text-sm text-red-600 mb-1">
+                    <strong>Mevcut:</strong> Sadece metin, etkileşim yok.
+                  </p>
+                  <p class="text-sm text-green-600">
+                    <strong>Öneri:</strong> Yazı içi ilgili gönderiler ve
+                    iletişim formu.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold mb-2">Footer</h4>
+                  <p class="text-sm text-red-600 mb-1">
+                    <strong>Mevcut:</strong> Zayıf ve eksik yapı.
+                  </p>
+                  <p class="text-sm text-green-600">
+                    <strong>Öneri:</strong> Hizmetler, iletişim, yasal sayfaları
+                    içeren zengin yapı.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="roadmap" class="bg-white p-8 rounded-2xl shadow-lg">
+          <h2 class="text-3xl font-bold text-center text-[#006494] mb-6">
+            İyileştirme Yol Haritası
+          </h2>
+          <div
+            class="flex flex-col md:flex-row justify-center items-center text-center"
+          >
+            <div class="flow-step flex-1 p-4">
+              <div
+                class="bg-[#006494] text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3 font-bold text-2xl"
+              >
+                1
+              </div>
+              <h4 class="font-bold text-[#006494]">
+                Kritik ve Acil Aksiyonlar
+              </h4>
+              <p class="text-sm text-gray-600 mt-1">
+                Site Hızı Optimizasyonu, Teknik Hataların Düzeltilmesi, Yasal
+                Sayfaların Eklenmesi.
+              </p>
+            </div>
+            <div class="flow-arrow hidden md:block"></div>
+            <div class="flow-step flex-1 p-4">
+              <div
+                class="bg-[#0582CA] text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3 font-bold text-2xl"
+              >
+                2
+              </div>
+              <h4 class="font-bold text-[#0582CA]">
+                Orta Vadeli İyileştirmeler
+              </h4>
+              <p class="text-sm text-gray-600 mt-1">
+                Meta Açıklamaları, Header/Footer Tasarımı, E-E-A-T Sayfası,
+                Resim Alt Metinleri.
+              </p>
+            </div>
+            <div class="flow-arrow hidden md:block"></div>
+            <div class="flow-step flex-1 p-4">
+              <div
+                class="bg-[#00A6FB] text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3 font-bold text-2xl"
+              >
+                3
+              </div>
+              <h4 class="font-bold text-[#00A6FB]">Uzun Vadeli Stratejiler</h4>
+              <p class="text-sm text-gray-600 mt-1">
+                Dönüşüm Odaklı Şablon Tasarımı, LLMS.txt, Sürekli Denetim ve
+                Gözetim.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const FONT_COLOR = "#333333";
+      const BORDER_COLOR = "#E5E7EB";
+      const PALETTE = {
+        blue1: "#00A6FB",
+        blue2: "#0582CA",
+        blue3: "#006494",
+        red: "#FF6B6B",
+        orange: "#FFA500",
+        gray: "#E5E7EB",
+      };
+
+      const tooltipConfig = {
+        plugins: {
+          tooltip: {
+            callbacks: {
+              title: function (tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                  return label.join(" ");
+                }
+                return label;
+              },
+            },
+          },
+        },
+      };
+
+      const mainScoreCtx = document
+        .getElementById("mainScoreChart")
+        .getContext("2d");
+      new Chart(mainScoreCtx, {
+        type: "doughnut",
+        data: {
+          labels: ["Performans Skoru", "Eksik Puan"],
+          datasets: [
+            {
+              data: [46, 54],
+              backgroundColor: [PALETTE.red, PALETTE.gray],
+              borderColor: "#FFFFFF",
+              borderWidth: 4,
+              cutout: "70%",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: false },
+          },
+        },
+      });
+
+      const radarCtx = document
+        .getElementById("technicalRadarChart")
+        .getContext("2d");
+      new Chart(radarCtx, {
+        type: "radar",
+        data: {
+          labels: [
+            "Site Haritası",
+            "Güvenlik (HSTS)",
+            ["Yapay Zeka", "Uyumu (LLMS)"],
+            "Link Sağlığı",
+            "Başlık Yapısı",
+          ],
+          datasets: [
+            {
+              label: "Teknik Sağlık (10 üzerinden)",
+              data: [2, 3, 1, 5, 3],
+              backgroundColor: "rgba(5, 130, 202, 0.2)",
+              borderColor: PALETTE.blue2,
+              pointBackgroundColor: PALETTE.blue2,
+              pointBorderColor: "#fff",
+              pointHoverBackgroundColor: "#fff",
+              pointHoverBorderColor: PALETTE.blue2,
+            },
+          ],
+        },
+        options: {
+          ...tooltipConfig,
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              angleLines: { color: BORDER_COLOR },
+              grid: { color: BORDER_COLOR },
+              pointLabels: {
+                color: FONT_COLOR,
+                font: { size: 12 },
+              },
+              ticks: {
+                backdropColor: "transparent",
+                color: FONT_COLOR,
+                stepSize: 2,
+              },
+              min: 0,
+              max: 10,
+            },
+          },
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: { color: FONT_COLOR },
+            },
+          },
+        },
+      });
+
+      const headingsCtx = document
+        .getElementById("headingsChart")
+        .getContext("2d");
+      new Chart(headingsCtx, {
+        type: "bar",
+        data: {
+          labels: ["Hatalı Sayfa Sayısı"],
+          datasets: [
+            {
+              label: "H1 Başlığı Yok",
+              data: [2],
+              backgroundColor: PALETTE.red,
+              borderRadius: 5,
+            },
+            {
+              label: "Birden Fazla H1 Başlığı",
+              data: [1],
+              backgroundColor: PALETTE.orange,
+              borderRadius: 5,
+            },
+            {
+              label: "Çok Uzun Başlık",
+              data: [1],
+              backgroundColor: PALETTE.blue1,
+              borderRadius: 5,
+            },
+          ],
+        },
+        options: {
+          ...tooltipConfig,
+          responsive: true,
+          maintainAspectRatio: false,
+          indexAxis: "y",
+          scales: {
+            x: {
+              stacked: true,
+              ticks: { color: FONT_COLOR, stepSize: 1 },
+              grid: { color: BORDER_COLOR },
+            },
+            y: {
+              stacked: true,
+              ticks: { color: FONT_COLOR },
+              grid: { display: false },
+            },
+          },
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: { color: FONT_COLOR },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
