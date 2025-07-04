@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kapsamlı SEO Denetim Raporu - drcagilerenoglu.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8f9fa;
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        height: 300px;
+      }
+      @media (min-width: 768px) {
+        .chart-container {
+          height: 350px;
+        }
+      }
+      .checklist-item {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: #ffebeb;
+        color: #c53030;
+        margin-bottom: 0.5rem;
+      }
+      .checklist-item::before {
+        content: "✗";
+        font-weight: bold;
+        margin-right: 0.75rem;
+        font-size: 1.25rem;
+      }
+      @keyframes shake {
+        10%,
+        90% {
+          transform: translate3d(-1px, 0, 0);
+        }
+        20%,
+        80% {
+          transform: translate3d(2px, 0, 0);
+        }
+        30%,
+        50%,
+        70% {
+          transform: translate3d(-4px, 0, 0);
+        }
+        40%,
+        60% {
+          transform: translate3d(4px, 0, 0);
+        }
+      }
+      .animate-shake {
+        animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <div
+      id="login-screen"
+      class="fixed inset-0 z-50 bg-sky-50 flex items-center justify-center p-4 transition-opacity duration-700 ease-in-out"
+    >
+      <div class="w-full max-w-sm mx-auto">
+        <div class="bg-white rounded-2xl shadow-xl p-8 text-center">
+          <img
+            src="https://i.ibb.co/cKrzPxz5/Screenshot-19.png"
+            alt="Op. Dr. Çağıl Erenoğlu"
+            class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-sky-200 shadow-md"
+            onerror="this.onerror=null;this.src='https://placehold.co/96x96/0582CA/FFFFFF?text=CE'"
+          />
+          <h2 class="text-xl font-bold text-gray-700">
+            Op. Dr. Çağıl Erenoğlu
+          </h2>
+          <p class="text-sm text-gray-500 mb-6">SEO Sağlık Raporu</p>
+          <form id="login-form">
+            <label for="password" class="sr-only">Şifre</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Şifrenizi Giriniz"
+              class="w-full px-4 py-3 text-center border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+            />
+            <p id="error-message" class="text-red-500 text-sm mt-2 h-5"></p>
+            <button
+              type="submit"
+              class="w-full bg-[#0582CA] text-white font-bold py-3 px-4 rounded-lg mt-4 hover:bg-[#006494] transition-colors duration-300"
+            >
+              Raporu Görüntüle
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="report-content"
+      class="opacity-0 transition-opacity duration-700 ease-in-out"
+    >
+      <div class="container mx-auto p-4 md:p-8">
+        <header class="bg-white p-6 rounded-2xl shadow-lg mb-12">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center gap-4"
+          >
+            <div class="text-center md:text-left">
+              <h1 class="text-3xl md:text-4xl font-bold text-[#006494]">
+                Kapsamlı SEO Sağlık Karnesi
+              </h1>
+              <p class="text-lg text-[#0582CA]">drcagilerenoglu.com</p>
+            </div>
+            <div class="bg-sky-100 p-4 rounded-lg text-center">
+              <div class="text-sm text-sky-700 font-semibold">Rapor Tarihi</div>
+              <div class="text-lg text-sky-800 font-bold">Temmuz 2025</div>
+            </div>
+          </div>
+        </header>
+
+        <main class="space-y-12">
+          <section
+            id="expert-analysis"
+            class="bg-white p-8 rounded-2xl shadow-lg"
+          >
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-8">
+              Uzman Analizi: Fırsatlar ve Stratejik Tavsiyeler
+            </h2>
+            <div class="max-w-4xl mx-auto mb-8">
+              <div
+                class="rounded-lg shadow-md overflow-hidden border border-gray-200 bg-gray-100"
+              >
+                <div class="bg-gray-200 p-2 flex items-center gap-1.5">
+                  <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                  <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                  <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                </div>
+                <img
+                  src="https://i.ibb.co/Jjhyymfq/Screenshot-10.png"
+                  alt="drcagilerenoglu.com web sitesi ekran görüntüsü"
+                  class="w-full h-auto object-cover"
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFFFFF/CCCCCC?text=Site+G%C3%B6r%C3%BCn%C3%BCm%C3%BC+Y%C3%BCklenemedi';"
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <!-- Sol Sütun: Hatalar ve Öneriler -->
+              <div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                  Teknik Hatalar ve Öneriler
+                </h3>
+                <div class="space-y-4">
+                  <div class="bg-red-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-red-800">
+                      Kritik Hata: Kırık Linkler ve Güvensiz Yönlendirmeler
+                    </h4>
+                    <p class="text-sm text-red-700 mt-1">
+                      Site içi 404 hataları ve HTTP'ye yapılan yönlendirmeler,
+                      hem kullanıcı deneyimini baltalıyor hem de Google'ın
+                      siteye olan güvenini sarsıyor. Bu durum, "crawl budget"
+                      (tarama bütçesi) israfına yol açarak önemli sayfaların
+                      indekslenmesini geciktirir.
+                    </p>
+                    <p class="text-sm font-bold text-red-900 mt-2">
+                      Tavsiye: Tüm kırık linkler acilen düzeltilmeli ve tüm site
+                      trafiği HTTPS üzerinden akacak şekilde
+                      yapılandırılmalıdır.
+                    </p>
+                  </div>
+                  <div class="bg-yellow-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-yellow-800">
+                      Orta Öncelikli Hata: Sayfa Hızı ve İçerik Eksiklikleri
+                    </h4>
+                    <p class="text-sm text-yellow-700 mt-1">
+                      Büyük boyutlu resimler ve çok sayıda eksik meta
+                      açıklaması, sayfa yüklenme hızını düşürerek kullanıcıların
+                      sabrını zorluyor. Meta açıklamalarının olmaması, arama
+                      sonuçlarındaki tıklanma oranını (CTR) doğrudan düşürür.
+                    </p>
+                    <p class="text-sm font-bold text-yellow-900 mt-2">
+                      Tavsiye: Tüm görseller optimize edilmeli, 66 sayfanın
+                      tamamı için kullanıcıyı cezbedecek, özgün meta
+                      açıklamaları yazılmalıdır.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- Sağ Sütun: UX ve Pozitifler -->
+              <div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                  SEO ve Kullanıcı Deneyimi (UX)
+                </h3>
+                <p class="text-gray-600 mb-6">
+                  Unutulmamalıdır ki, iyi bir SEO stratejisi aslında iyi bir
+                  kullanıcı deneyimi stratejisidir. Google, kullanıcıları memnun
+                  eden siteleri ödüllendirir. Yavaş açılan, hatalı linklere
+                  sahip veya aradığını bulmanın zor olduğu bir site, ne kadar
+                  iyi içeriğe sahip olursa olsun sıralamalarda geriler. Bu
+                  rapordaki teknik öneriler, yalnızca arama motorları için
+                  değil, aynı zamanda kliniğinize dijital ortamda ulaşan her
+                  potansiyel hasta için de yapılmaktadır.
+                </p>
+
+                <div
+                  class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500"
+                >
+                  <h4 class="text-xl font-bold text-green-800 mb-2">
+                    ✅ Pozitif Yanlar ve Güçlü Temel
+                  </h4>
+                  <p class="text-sm text-green-700">
+                    Tüm eksikliklere rağmen, sitenin üzerinde çalışılabilecek
+                    güçlü bir temeli bulunmaktadır:
+                  </p>
+                  <ul
+                    class="list-disc list-inside text-sm text-green-700 mt-2 space-y-1"
+                  >
+                    <li>
+                      <strong>Modern Altyapı:</strong> Site, esnek ve SEO dostu
+                      bir altyapı (WordPress) kullanmaktadır.
+                    </li>
+                    <li>
+                      <strong>İyi Performans Potansiyeli:</strong> 69'luk skor,
+                      doğru optimizasyonlarla kolayca 90+ seviyelerine
+                      çıkarılabilecek bir başlangıç noktasıdır.
+                    </li>
+                    <li>
+                      <strong>Marka Değeri:</strong> Alan adı (domain) akılda
+                      kalıcı ve marka kimliğiyle uyumludur.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="summary" class="bg-white p-6 rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-4">
+              Genel Site Sağlığı ve Fırsatlar
+            </h2>
+            <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
+              Yapılan denetimler, sitenin genel sağlığının iyileştirilmesi
+              gerektiğini ve arama motoru görünürlüğünü artıracak önemli
+              fırsatlar barındırdığını göstermektedir.
+            </p>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto"
+            >
+              <div
+                class="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg text-center"
+              >
+                <div
+                  class="text-amber-600 text-sm font-bold uppercase tracking-wider"
+                >
+                  Site Sağlık Skoru
+                </div>
+                <div
+                  id="animated-health-score"
+                  class="text-6xl font-extrabold text-amber-700 my-2"
+                >
+                  0%
+                </div>
+                <p class="text-amber-800 text-sm">
+                  100 üzerinden. İyileştirme gerekli.
+                </p>
+              </div>
+              <div
+                class="bg-red-50 border-l-4 border-red-400 p-6 rounded-lg text-center"
+              >
+                <div
+                  class="text-red-600 text-sm font-bold uppercase tracking-wider"
+                >
+                  Tespit Edilen Hata Sayısı
+                </div>
+                <div
+                  id="animated-error-count"
+                  class="text-6xl font-extrabold text-red-700 my-2"
+                >
+                  0
+                </div>
+                <p class="text-red-800 text-sm">
+                  Acil müdahale gerektiren sorunlar.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="performance-metrics"
+            class="bg-white p-6 rounded-2xl shadow-lg"
+          >
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-6">
+              SEO Performans Metrikleri
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-xl font-bold text-center text-gray-700 mb-2">
+                  Organik Trafik Trendi
+                </h3>
+                <p class="text-center text-sm text-gray-500 mb-4">
+                  Son 1 yıllık organik trafik verileri, sitede bir düşüş eğilimi
+                  olduğunu göstermektedir.
+                </p>
+                <div class="chart-container">
+                  <canvas id="trafficChart"></canvas>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-center text-gray-700 mb-2">
+                  Anahtar Kelime Sıralama Dağılımı
+                </h3>
+                <p class="text-center text-sm text-gray-500 mb-4">
+                  Sitenin ilk 3'te yer alan anahtar kelime sayısı azalırken,
+                  daha gerideki sıralamalarda yığılma görülmektedir.
+                </p>
+                <div class="chart-container">
+                  <canvas id="keywordChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="pagespeed-panel"
+            class="bg-white p-8 rounded-2xl shadow-lg"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div class="text-center">
+                <div class="text-gray-500 text-lg">Mobil Performans Skoru</div>
+                <div class="text-7xl font-extrabold text-orange-500 my-2">
+                  69
+                </div>
+                <div class="text-lg font-semibold text-orange-600">
+                  İyileştirme Gerekli
+                </div>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-[#006494] mb-4">
+                  Önemli Web Verileri Başarısız
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Genel skor "orta" seviyede olsa da, siteniz Google'ın en
+                  kritik kullanıcı deneyimi testi olan **Önemli Web Verileri
+                  (Core Web Vitals)** kriterlerini karşılayamıyor. Özellikle LCP
+                  (sayfanın en büyük içeriğinin yüklenme süresi) metriğindeki
+                  yavaşlık, ziyaretçilerin siteyi yavaş algılamasına ve terk
+                  etmesine neden olabilir. Bu durum, Google sıralamalarınızı
+                  doğrudan olumsuz etkiler.
+                </p>
+                <img
+                  src="https://i.ibb.co/8Ljd760X/Screenshot-13.png"
+                  alt="Önemli Web Verileri Sorunu"
+                  class="rounded-lg border border-gray-200 shadow-sm w-full"
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x200/FFFFFF/CCCCCC?text=G%C3%B6rsel+Y%C3%BCklenemedi';"
+                />
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="technical-issues"
+            class="bg-white p-8 rounded-2xl shadow-lg"
+          >
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-8">
+              Kritik Teknik Sorunlar ve Detaylar
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- High Priority -->
+              <div
+                class="p-6 bg-red-50 border-t-4 border-red-500 rounded-lg shadow-md"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="font-bold text-lg text-gray-800">
+                    Kırık İç Linkler (404)
+                  </h3>
+                  <span
+                    class="text-xs font-bold text-red-700 bg-red-200 px-2 py-1 rounded-full"
+                    >YÜKSEK</span
+                  >
+                </div>
+                <p class="text-sm text-gray-600">
+                  Site içinde kullanıcıları ve arama motorlarını var olmayan
+                  sayfalara yönlendiren 3 link tespit edildi.
+                </p>
+              </div>
+              <div
+                class="p-6 bg-red-50 border-t-4 border-red-500 rounded-lg shadow-md"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="font-bold text-lg text-gray-800">
+                    Güvensiz Yönlendirmeler
+                  </h3>
+                  <span
+                    class="text-xs font-bold text-red-700 bg-red-200 px-2 py-1 rounded-full"
+                    >YÜKSEK</span
+                  >
+                </div>
+                <p class="text-sm text-gray-600">
+                  Güvenli (HTTPS) sayfalardan güvenli olmayan (HTTP) sayfalara
+                  yönlenen 30 bağlantı bulundu.
+                </p>
+              </div>
+              <!-- Medium Priority -->
+              <div
+                class="p-6 bg-yellow-50 border-t-4 border-yellow-500 rounded-lg shadow-md"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="font-bold text-lg text-gray-800">
+                    Büyük Boyutlu Resimler
+                  </h3>
+                  <span
+                    class="text-xs font-bold text-yellow-700 bg-yellow-200 px-2 py-1 rounded-full"
+                    >ORTA</span
+                  >
+                </div>
+                <p class="text-sm text-gray-600">
+                  Sayfa hızını yavaşlatan 58 adet optimize edilmemiş, büyük
+                  boyutlu resim bulunmaktadır.
+                </p>
+              </div>
+              <div
+                class="p-6 bg-yellow-50 border-t-4 border-yellow-500 rounded-lg shadow-md"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="font-bold text-lg text-gray-800">
+                    Eksik Meta Açıklamaları
+                  </h3>
+                  <span
+                    class="text-xs font-bold text-yellow-700 bg-yellow-200 px-2 py-1 rounded-full"
+                    >ORTA</span
+                  >
+                </div>
+                <p class="text-sm text-gray-600">
+                  Arama sonuçlarındaki tıklanma oranını etkileyen 66 sayfanın
+                  meta açıklaması eksiktir.
+                </p>
+              </div>
+              <div
+                class="p-6 bg-yellow-50 border-t-4 border-yellow-500 rounded-lg shadow-md"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="font-bold text-lg text-gray-800">
+                    Eksik Alt Metinler
+                  </h3>
+                  <span
+                    class="text-xs font-bold text-yellow-700 bg-yellow-200 px-2 py-1 rounded-full"
+                    >ORTA</span
+                  >
+                </div>
+                <p class="text-sm text-gray-600">
+                  Görsel SEO ve erişilebilirlik için kritik olan 74 resmin alt
+                  metni (alt text) bulunmamaktadır.
+                </p>
+              </div>
+              <!-- Low Priority -->
+              <div
+                class="p-6 bg-sky-50 border-t-4 border-sky-500 rounded-lg shadow-md"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="font-bold text-lg text-gray-800">Eksik Favicon</h3>
+                  <span
+                    class="text-xs font-bold text-sky-700 bg-sky-200 px-2 py-1 rounded-full"
+                    >DÜŞÜK</span
+                  >
+                </div>
+                <p class="text-sm text-gray-600">
+                  Tarayıcı sekmesinde sitenizi temsil eden marka logosu
+                  (favicon) eksik.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section id="eeat-ux">
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-6">
+              Kullanıcı Deneyimi ve Güven (E-E-A-T) Analizi
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="bg-white p-6 rounded-2xl shadow-lg">
+                <h3 class="text-xl font-bold text-[#006494] mb-4">
+                  Yasal Sayfa Kontrol Listesi
+                </h3>
+                <div class="checklist-item">Gizlilik Politikası</div>
+                <div class="checklist-item">KVKK Bilgilendirme</div>
+                <div class="checklist-item">Kullanım Koşulları</div>
+                <div class="checklist-item">Sık Sorulan Sorular</div>
+              </div>
+              <div class="bg-white p-6 rounded-2xl shadow-lg">
+                <h3 class="text-xl font-bold text-[#006494] mb-4">
+                  E-E-A-T Yazar Sayfası Yetersiz
+                </h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  Google, özellikle sağlık konularında içeriği oluşturan kişinin
+                  uzmanlığını ve otoritesini görmek ister. Mevcut yazar sayfası
+                  bu beklentiyi karşılamaktan uzaktır.
+                </p>
+                <img
+                  src="https://i.ibb.co/mCH6P0vb/Screenshot-16.png"
+                  alt="Yetersiz Yazar Sayfası"
+                  class="rounded-lg border border-gray-200 shadow-sm w-full mb-4"
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x200/FFFFFF/CCCCCC?text=G%C3%B6rsel+Y%C3%BCklenemedi';"
+                />
+              </div>
+              <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg">
+                <h3 class="text-xl font-bold text-center text-[#006494] mb-4">
+                  Blog Şablonu İyileştirme Fırsatı
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                  <div>
+                    <p class="text-sm text-gray-600 mb-4">
+                      Mevcut blog şablonu, kullanıcı etkileşimini artıracak ve
+                      sitede daha uzun süre kalmalarını sağlayacak önemli
+                      elementlerden yoksundur.
+                    </p>
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Eklenecekler:
+                    </h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>İçindekiler Tablosu (Breadcrumbs)</li>
+                      <li>Yazı İçi İlgili Gönderiler</li>
+                      <li>Randevu veya İletişim Formu</li>
+                      <li>Yazar Bilgi Kartı (Author Card)</li>
+                      <li>En Son Yazılar Bölümü</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <img
+                      src="https://i.ibb.co/bg44Hyjb/Screenshot-15.png"
+                      alt="Blog Yazı Şablonu"
+                      class="rounded-lg border border-gray-200 shadow-sm w-full"
+                      onerror="this.onerror=null;this.src='https://placehold.co/600x200/FFFFFF/CCCCCC?text=G%C3%B6rsel+Y%C3%BCklenemedi';"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="roadmap" class="bg-white p-8 rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-8">
+              Önceliklendirilmiş İyileştirme Yol Haritası
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div
+                class="p-6 bg-red-50 border-t-4 border-red-500 rounded-lg shadow-md"
+              >
+                <h3 class="text-2xl font-bold text-red-700 mb-4">
+                  ⚡️ Yüksek Öncelik
+                </h3>
+                <p class="text-gray-600 mb-6">
+                  En hızlı ve en büyük etkiyi yaratacak, temel sağlık
+                  sorunlarını giderecek adımlar.
+                </p>
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-semibold text-gray-800">
+                      Teknik SEO Düzeltmeleri
+                    </h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>404 veren kırık iç linklerin düzeltilmesi.</li>
+                      <li>
+                        HTTP'den HTTPS'ye yönlenen 30 linkin güncellenmesi.
+                      </li>
+                      <li>Eksik Favicon'un eklenmesi.</li>
+                      <li>HSTS güvenlik protokolünün aktifleştirilmesi.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Yasal Uyumluluk</h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>Gerekli tüm yasal sayfaların oluşturulması.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="p-6 bg-yellow-50 border-t-4 border-yellow-500 rounded-lg shadow-md"
+              >
+                <h3 class="text-2xl font-bold text-yellow-700 mb-4">
+                  📈 Orta Öncelik
+                </h3>
+                <p class="text-gray-600 mb-6">
+                  Temeller atıldıktan sonra görünürlüğü ve kullanıcı deneyimini
+                  artıracak adımlar.
+                </p>
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-semibold text-gray-800">
+                      Performans ve İçerik
+                    </h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>58 adet büyük boyutlu resmin optimize edilmesi.</li>
+                      <li>
+                        66 sayfadaki eksik meta başlık ve açıklamaların
+                        yazılması.
+                      </li>
+                      <li>74 resim için alt metin (alt text) eklenmesi.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">
+                      Güven ve Otorite (E-E-A-T)
+                    </h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>Kapsamlı bir yazar sayfası oluşturulması.</li>
+                      <li>
+                        Footer (alt bilgi) bölümünün yeniden tasarlanması.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="p-6 bg-green-50 border-t-4 border-green-500 rounded-lg shadow-md"
+              >
+                <h3 class="text-2xl font-bold text-green-700 mb-4">
+                  🌱 Sürekli Gelişim
+                </h3>
+                <p class="text-gray-600 mb-6">
+                  Sıralamaları korumak ve sürekli büyümeyi sağlamak için devam
+                  edecek stratejiler.
+                </p>
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-semibold text-gray-800">
+                      Gelişmiş Optimizasyon
+                    </h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>Blog şablonuna etkileşim öğeleri eklenmesi.</li>
+                      <li>
+                        Yapay zeka tarayıcıları için `LLMS.txt` oluşturulması.
+                      </li>
+                      <li>
+                        3 sahipsiz sayfanın siteye dahil edilmesi veya
+                        engellenmesi.
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">
+                      Takip ve Raporlama
+                    </h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>Sıralama ve trafik takibinin yapılması.</li>
+                      <li>Aylık performans raporları oluşturulması.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="mt-12 border-t-2 border-gray-200 pt-8">
+          <div class="container mx-auto text-center text-gray-600">
+            <img
+              src="http://www.novavitamedia.com/wp-content/uploads/2025/03/itefrgqkqqwju1og6rkq.png"
+              alt="Nova Vita Media Logosu"
+              class="h-12 mx-auto mb-4"
+              onerror="this.onerror=null;this.style.display='none'"
+            />
+            <p class="text-sm">
+              Bu rapor
+              <strong class="font-semibold text-[#006494]"
+                >Nova Vita Media</strong
+              >
+              tarafından
+              <strong class="font-semibold text-[#0582CA]"
+                >drcagilerenoglu.com</strong
+              >
+              için özel olarak hazırlanmıştır.
+            </p>
+            <p class="text-xs text-gray-400 mt-2">
+              © 2025 Nova Vita Media. Tüm Hakları Saklıdır.
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const loginScreen = document.getElementById("login-screen");
+        const reportContent = document.getElementById("report-content");
+        const loginForm = document.getElementById("login-form");
+        const passwordInput = document.getElementById("password");
+        const errorMessage = document.getElementById("error-message");
+        const correctPassword = "2020";
+
+        reportContent.classList.add("hidden");
+
+        loginForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (passwordInput.value === correctPassword) {
+            errorMessage.textContent = "";
+            errorMessage.classList.add("hidden");
+
+            loginScreen.classList.add("opacity-0");
+
+            setTimeout(() => {
+              loginScreen.style.display = "none";
+              reportContent.classList.remove("hidden");
+              setTimeout(() => {
+                reportContent.classList.remove("opacity-0");
+                initializeChartsAndAnimations();
+              }, 50);
+            }, 700);
+          } else {
+            errorMessage.textContent = "Hatalı şifre. Lütfen tekrar deneyin.";
+            errorMessage.classList.remove("hidden");
+            loginForm.classList.add("animate-shake");
+            setTimeout(() => {
+              loginForm.classList.remove("animate-shake");
+            }, 500);
+          }
+        });
+
+        function animateValue(obj, start, end, duration, isPercent = false) {
+          let startTimestamp = null;
+          const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min(
+              (timestamp - startTimestamp) / duration,
+              1
+            );
+            const value = Math.floor(progress * (end - start) + start);
+            obj.innerHTML = isPercent ? `${value}%` : value;
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            }
+          };
+          window.requestAnimationFrame(step);
+        }
+
+        function initializeChartsAndAnimations() {
+          const FONT_COLOR = "#333333";
+          const BORDER_COLOR = "#E5E7EB";
+          const PALETTE = {
+            blue1: "#00A6FB",
+            blue2: "#0582CA",
+            blue3: "#006494",
+            red: "#FF6B6B",
+            orange: "#FFA500",
+            gray: "#E5E7EB",
+          };
+
+          const tooltipConfig = {
+            callbacks: {
+              title: function (tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                  return label.join(" ");
+                }
+                return label;
+              },
+            },
+          };
+
+          // Animate numbers
+          const healthScoreEl = document.getElementById(
+            "animated-health-score"
+          );
+          const errorCountEl = document.getElementById("animated-error-count");
+          if (healthScoreEl) animateValue(healthScoreEl, 0, 76, 1500, true);
+          if (errorCountEl) animateValue(errorCountEl, 0, 174, 1500);
+
+          // Traffic Chart
+          const trafficCtx = document
+            .getElementById("trafficChart")
+            ?.getContext("2d");
+          if (trafficCtx) {
+            new Chart(trafficCtx, {
+              type: "line",
+              data: {
+                labels: [
+                  "Tem",
+                  "Ağu",
+                  "Eyl",
+                  "Eki",
+                  "Kas",
+                  "Ara",
+                  "Oca",
+                  "Şub",
+                  "Mar",
+                  "Nis",
+                  "May",
+                  "Haz",
+                ],
+                datasets: [
+                  {
+                    label: "Organik Trafik",
+                    data: [
+                      310, 290, 280, 260, 220, 210, 190, 150, 160, 140, 130,
+                      139,
+                    ],
+                    borderColor: PALETTE.blue2,
+                    backgroundColor: "rgba(5, 130, 202, 0.1)",
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: PALETTE.blue2,
+                    pointRadius: 4,
+                  },
+                ],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: { beginAtZero: false },
+                },
+                plugins: {
+                  legend: { display: false },
+                  tooltip: tooltipConfig,
+                },
+              },
+            });
+          }
+
+          // Keyword Chart
+          const keywordCtx = document
+            .getElementById("keywordChart")
+            ?.getContext("2d");
+          if (keywordCtx) {
+            new Chart(keywordCtx, {
+              type: "line",
+              data: {
+                labels: [
+                  "Tem",
+                  "Ağu",
+                  "Eyl",
+                  "Eki",
+                  "Kas",
+                  "Ara",
+                  "Oca",
+                  "Şub",
+                  "Mar",
+                  "Nis",
+                  "May",
+                  "Haz",
+                ],
+                datasets: [
+                  {
+                    label: "İlk 3",
+                    data: [120, 110, 90, 80, 60, 50, 40, 30, 35, 25, 20, 15],
+                    backgroundColor: "rgba(0, 100, 148, 0.7)",
+                    borderColor: "rgba(0, 100, 148, 1)",
+                    fill: true,
+                    tension: 0.4,
+                  },
+                  {
+                    label: "4-10",
+                    data: [
+                      250, 240, 220, 210, 190, 180, 160, 150, 155, 140, 130,
+                      125,
+                    ],
+                    backgroundColor: "rgba(5, 130, 202, 0.7)",
+                    borderColor: "rgba(5, 130, 202, 1)",
+                    fill: true,
+                    tension: 0.4,
+                  },
+                  {
+                    label: "11-20",
+                    data: [
+                      350, 360, 380, 390, 410, 420, 450, 470, 480, 500, 510,
+                      509,
+                    ],
+                    backgroundColor: "rgba(0, 166, 251, 0.7)",
+                    borderColor: "rgba(0, 166, 251, 1)",
+                    fill: true,
+                    tension: 0.4,
+                  },
+                ],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: { stacked: true, beginAtZero: true },
+                  x: { stacked: true },
+                },
+                plugins: {
+                  legend: { position: "bottom" },
+                  tooltip: tooltipConfig,
+                },
+                interaction: {
+                  mode: "index",
+                  intersect: false,
+                },
+              },
+            });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
