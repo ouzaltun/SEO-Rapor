@@ -59,7 +59,7 @@
         margin-bottom: 0.75rem;
       }
       .keyword-item::before {
-        content: "�";
+        content: "🔑";
         position: absolute;
         left: -1rem;
         top: 5px;
@@ -84,31 +84,24 @@
         box-shadow: 0 4px 14px rgba(0, 166, 166, 0.25);
         margin-bottom: 2.5rem;
         flex-shrink: 0;
+        position: relative;
       }
-      .mindmap-row {
+      .mindmap-branches-container {
         display: flex;
         justify-content: center;
+        align-items: flex-start;
         flex-wrap: wrap;
-        gap: 1.5rem;
+        gap: 2rem;
         width: 100%;
-        margin-bottom: 2.5rem;
       }
-      .branch-column {
+      .category-group {
+        padding: 1.5rem;
+        border-radius: 1rem;
+        border: 2px solid;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 1.5rem;
-        position: relative;
-      }
-      .branch-column::before {
-        content: "";
-        position: absolute;
-        top: -1.5rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 2px;
-        height: 1.5rem;
-        background-color: #cbd5e1;
       }
       .category-node {
         padding: 0.5rem 1.5rem;
@@ -124,474 +117,593 @@
         flex-direction: column;
         align-items: center;
         gap: 1rem;
-        position: relative;
-      }
-      .posts-list::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 2px;
-        height: 100%;
-        background-color: #cbd5e1;
-        z-index: -1;
       }
       .post-node {
         padding: 0.5rem 1rem;
-        background-color: #f8fafc;
+        background-color: white;
         border: 1px solid #e2e8f0;
         border-radius: 8px;
         font-size: 0.875rem;
         text-align: center;
         width: 240px;
-        position: relative;
       }
-      .post-node::before {
-        display: none;
+      /* Login Screen Styles */
+      #report-content {
+        transition: opacity 0.7s ease-in-out;
+      }
+      @keyframes shake {
+        10%,
+        90% {
+          transform: translate3d(-1px, 0, 0);
+        }
+        20%,
+        80% {
+          transform: translate3d(2px, 0, 0);
+        }
+        30%,
+        50%,
+        70% {
+          transform: translate3d(-4px, 0, 0);
+        }
+        40%,
+        60% {
+          transform: translate3d(4px, 0, 0);
+        }
+      }
+      .shake {
+        animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
       }
     </style>
   </head>
   <body class="bg-slate-50 text-gray-800">
-    <header class="bg-white shadow-md">
+    <div
+      id="login-screen"
+      class="fixed inset-0 bg-slate-100 flex items-center justify-center p-4 transition-opacity duration-500 z-50"
+    >
       <div
-        class="container mx-auto px-4 py-4 flex justify-between items-center"
+        class="w-full max-w-sm bg-white p-8 rounded-2xl shadow-xl text-center"
       >
         <img
           src="https://i.ibb.co/C5cf3Vdg/Gokce-Mik-Logo.png"
           alt="Op. Dr. Gökçe Mık Logosu"
-          class="h-12"
-          onerror="this.onerror=null;this.src='https://placehold.co/200x50/ffffff/cccccc?text=Logo';"
+          class="h-16 mx-auto mb-6"
+          onerror="this.onerror=null;this.src='https://placehold.co/200x64/ffffff/cccccc?text=Logo';"
         />
-        <h1 class="text-xl md:text-2xl font-bold text-[#00A6A6]">
-          Op. Dr. Gökçe Mık İçerik Stratejisi
-        </h1>
+        <h1 class="text-xl font-bold text-gray-700 mb-2">Gökçe Mık</h1>
+        <h2 class="text-lg font-semibold text-[#00A6A6] mb-6">
+          İçerik Strateji Raporu
+        </h2>
+        <form id="login-form">
+          <input
+            type="password"
+            id="password"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-[#00A6A6] transition"
+            placeholder="Şifreyi Giriniz"
+          />
+          <button
+            type="submit"
+            class="w-full mt-4 px-4 py-3 bg-[#00A6A6] text-white font-bold rounded-lg hover:bg-teal-700 transition-colors"
+          >
+            Giriş Yap
+          </button>
+        </form>
       </div>
-    </header>
+    </div>
 
-    <main class="container mx-auto p-4 md:p-8">
-      <section class="mb-16">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-slate-100 p-4 sm:p-6 flex justify-center">
-            <img
-              src="https://i.ibb.co/B2wh83sM/image.png"
-              alt="Op. Dr. Gökçe Mık"
-              class="rounded-lg shadow-md max-w-full h-auto"
-              style="max-width: 1024px"
-            />
+    <div id="report-content" class="opacity-0 pointer-events-none">
+      <header class="bg-white shadow-md">
+        <div
+          class="container mx-auto px-4 py-4 flex justify-between items-center"
+        >
+          <img
+            src="https://i.ibb.co/C5cf3Vdg/Gokce-Mik-Logo.png"
+            alt="Op. Dr. Gökçe Mık Logosu"
+            class="h-12"
+            onerror="this.onerror=null;this.src='https://placehold.co/200x50/ffffff/cccccc?text=Logo';"
+          />
+          <h1 class="text-xl md:text-2xl font-bold text-[#00A6A6]">
+            Op. Dr. Gökçe Mık İçerik Stratejisi
+          </h1>
+        </div>
+      </header>
+
+      <main class="container mx-auto p-4 md:p-8">
+        <section class="mb-16">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="bg-slate-100 p-4 sm:p-6 flex justify-center">
+              <img
+                src="https://i.ibb.co/B2wh83sM/image.png"
+                alt="Op. Dr. Gökçe Mık"
+                class="rounded-lg shadow-md max-w-full h-auto"
+                style="max-width: 1024px"
+              />
+            </div>
+            <div class="p-8 md:p-10 text-center">
+              <h2 class="text-3xl font-extrabold text-[#00A6A6] mb-4">
+                Stratejimizin Temeli
+              </h2>
+              <p class="text-gray-700 mb-6 max-w-3xl mx-auto">
+                Bu içerik planı, Op. Dr. Gökçe Mık'ın yeni web sitesi için bir
+                yol haritasıdır. Amacımız, internette hızla görünürlük
+                kazanmaktır. Bunun için içerik konularımızı belirlerken iki ana
+                noktaya odaklandık:
+              </p>
+              <div
+                class="flex flex-col md:flex-row justify-center items-start gap-8 max-w-4xl mx-auto"
+              >
+                <div class="flex-1">
+                  <strong class="text-gray-800 text-xl block mb-2"
+                    >✔ Doğru Hastaya Ulaşmak</strong
+                  >
+                  <p class="text-gray-600">
+                    Hastaların internette en çok aradığı, "yorumlar",
+                    "fiyatlar", "iyileşme süreci" gibi merak ettikleri konuları
+                    seçtik.
+                  </p>
+                </div>
+                <div class="flex-1">
+                  <strong class="text-gray-800 text-xl block mb-2"
+                    >✔ Hızlı Sonuç Almak</strong
+                  >
+                  <p class="text-gray-600">
+                    Rekabetin daha az olduğu, spesifik konulara öncelik vererek
+                    arama sonuçlarında daha çabuk üst sıralara çıkmayı
+                    hedefliyoruz.
+                  </p>
+                </div>
+              </div>
+              <p class="mt-8 text-gray-600 italic max-w-3xl mx-auto">
+                Bu yaklaşım, sitemizin kısa sürede doğru kitleye ulaşmasını ve
+                dijitalde güçlü bir başlangıç yapmasını sağlayacaktır.
+              </p>
+            </div>
           </div>
-          <div class="p-8 md:p-10 text-center">
-            <h2 class="text-3xl font-extrabold text-[#00A6A6] mb-4">
-              Stratejimizin Temeli
-            </h2>
-            <p class="text-gray-700 mb-6 max-w-3xl mx-auto">
-              Bu içerik planı, Op. Dr. Gökçe Mık'ın yeni web sitesi için bir yol
-              haritasıdır. Amacımız, internette hızla görünürlük kazanmaktır.
-              Bunun için içerik konularımızı belirlerken iki ana noktaya
-              odaklandık:
-            </p>
-            <div
-              class="flex flex-col md:flex-row justify-center items-start gap-8 max-w-4xl mx-auto"
-            >
-              <div class="flex-1">
-                <strong class="text-gray-800 text-xl block mb-2"
-                  >✔ Doğru Hastaya Ulaşmak</strong
-                >
-                <p class="text-gray-600">
-                  Hastaların internette en çok aradığı, "yorumlar", "fiyatlar",
-                  "iyileşme süreci" gibi merak ettikleri konuları seçtik.
+        </section>
+
+        <section class="mb-16 bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-bold text-center mb-4">
+            Planlanacak İçerik Yoğunluğu
+          </h2>
+          <p class="text-center text-gray-600 mb-6 max-w-3xl mx-auto">
+            Aşağıdaki grafik, oluşturulacak blog yazılarının kategorilere göre
+            dağılımını göstermektedir. Bu, hangi uzmanlık alanlarının öncelikli
+            olarak içerikle destekleneceğini görselleştirmektedir.
+          </p>
+          <div class="chart-container max-w-4xl mx-auto">
+            <canvas id="comparisonChart"></canvas>
+          </div>
+        </section>
+
+        <section class="mb-16 bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-bold text-center mb-8">
+            Görsel Site Haritası (Zihin Haritası)
+          </h2>
+          <div class="mindmap-container">
+            <div class="mindmap-center">gokcemik.com</div>
+            <div class="mindmap-branches-container">
+              <!-- Ayak ve Ayak Bileği -->
+              <div
+                class="category-group"
+                style="border-color: rgba(249, 160, 63, 0.4)"
+              >
+                <div class="category-node" style="background-color: #f9a03f">
+                  Ayak ve Ayak Bileği
+                </div>
+                <div class="posts-list">
+                  <div class="post-node">aşil tendon ameliyatı yorumları</div>
+                  <div class="post-node">topuk dikeni iğnesi yorumları</div>
+                  <div class="post-node">topuk dikeni ameliyatı yorumları</div>
+                  <div class="post-node">topuk dikeni lazer tedavisi</div>
+                  <div class="post-node">
+                    halluks valgus ameliyatı yorumları
+                  </div>
+                  <div class="post-node">halluks valgus gece ateli</div>
+                  <div class="post-node">halluks rigidus ameliyatı</div>
+                  <div class="post-node">halluks rigidus iyileşme süreci</div>
+                  <div class="post-node">ayak baş parmağı kireçlenmesi</div>
+                  <div class="post-node">morton nöroma hasta yorumları</div>
+                  <div class="post-node">morton nöroma tedavi edilmezse</div>
+                  <div class="post-node">morton nöroma kortizon iğnesi</div>
+                  <div class="post-node">parmak uzatma ameliyatı</div>
+                  <div class="post-node">ayak numarası küçültme ameliyatı</div>
+                </div>
+              </div>
+              <!-- Enjeksiyon Tedavileri -->
+              <div
+                class="category-group"
+                style="border-color: rgba(248, 90, 62, 0.4)"
+              >
+                <div class="category-node" style="background-color: #f85a3e">
+                  Enjeksiyon Tedavileri
+                </div>
+                <div class="posts-list">
+                  <div class="post-node">dize hyaluronik asit enjeksiyonu</div>
+                  <div class="post-node">eklem içi enjeksiyon yaptıranlar</div>
+                  <div class="post-node">
+                    diz eklem içi enjeksiyon nasıl yapılır
+                  </div>
+                  <div class="post-node">dize kök hücre yorumları</div>
+                  <div class="post-node">menisküs kök hücre yorumları</div>
+                  <div class="post-node">prp diz tedavisi yorumları</div>
+                  <div class="post-node">dize prp sonrası dikkat</div>
+                  <div class="post-node">omuza prp yaptıranların yorumları</div>
+                </div>
+              </div>
+              <!-- Diğer Kategoriler -->
+              <div
+                class="category-group"
+                style="border-color: rgba(0, 166, 166, 0.4)"
+              >
+                <div class="category-node" style="background-color: #00a6a6">
+                  Çocuk Ortopedisi
+                </div>
+                <div class="posts-list">
+                  <div class="post-node">çocuğun düz taban tedavisi</div>
+                  <div class="post-node">
+                    bebeklerde düz taban nasıl anlaşılır
+                  </div>
+                </div>
+              </div>
+              <div
+                class="category-group"
+                style="border-color: rgba(226, 160, 255, 0.4)"
+              >
+                <div class="category-node" style="background-color: #e2a0ff">
+                  Diz
+                </div>
+                <div class="posts-list">
+                  <div class="post-node">robotik diz protezi fiyatı</div>
+                  <div class="post-node">diz protezi fizik tedavi</div>
+                  <div class="post-node">diz protezi sonrası yorumlar</div>
+                </div>
+              </div>
+              <div
+                class="category-group"
+                style="border-color: rgba(75, 192, 192, 0.4)"
+              >
+                <div class="category-node" style="background-color: #4bc0c0">
+                  Kol
+                </div>
+                <div class="posts-list">
+                  <div class="post-node">tenisçi dirseği iğnesi</div>
+                  <div class="post-node">tetik parmak iğne ile gevşetme</div>
+                  <div class="post-node">tetik parmak ameliyatı yorumları</div>
+                </div>
+              </div>
+              <div
+                class="category-group"
+                style="border-color: rgba(255, 177, 116, 0.4)"
+              >
+                <div class="category-node" style="background-color: #ffb174">
+                  Omuz
+                </div>
+                <div class="posts-list">
+                  <div class="post-node">omuz kalsifik tendinit tedavisi</div>
+                  <div class="post-node">omuz sıkışma sendromu</div>
+                </div>
+              </div>
+              <div
+                class="category-group"
+                style="border-color: rgba(255, 138, 122, 0.4)"
+              >
+                <div class="category-node" style="background-color: #ff8a7a">
+                  Kalça
+                </div>
+                <div class="posts-list">
+                  <div class="post-node">kalça protezi ameliyatı yorumları</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold text-center mb-8">
+            Kategori ve Blog İçerik Planı (Detaylı)
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            <div class="plan-card">
+              <div class="p-6 card-content">
+                <h3 class="text-2xl font-bold mb-4 text-[#F9A03F]">
+                  Ayak ve Ayak Bileği
+                </h3>
+                <h4 class="font-semibold text-lg mb-2">
+                  🔑 Hedef Anahtar Kelimeler
+                </h4>
+                <p class="text-sm text-gray-500 mb-3">
+                  Kategori sayfasına, bu anahtar kelimeleri hedefleyen SEO
+                  uyumlu, kapsamlı bir hizmet açıklaması içeriği girilecektir.
                 </p>
-              </div>
-              <div class="flex-1">
-                <strong class="text-gray-800 text-xl block mb-2"
-                  >✔ Hızlı Sonuç Almak</strong
-                >
-                <p class="text-gray-600">
-                  Rekabetin daha az olduğu, spesifik konulara öncelik vererek
-                  arama sonuçlarında daha çabuk üst sıralara çıkmayı
-                  hedefliyoruz.
+                <ul>
+                  <li class="keyword-item">ayak bileği cerrahisi uzmanı</li>
+                  <li class="keyword-item">ayak ortopedisi uzmanı</li>
+                  <li class="keyword-item">İstanbul ayak cerrahisi uzmanı</li>
+                  <li class="keyword-item">ayak bileği ameliyatı fiyatı</li>
+                  <li class="keyword-item">
+                    ayak parmak ameliyatı yapan doktor
+                  </li>
+                </ul>
+                <h4 class="font-semibold text-lg mt-6 mb-2">
+                  📝 Planlanacak Blog Yazıları
+                </h4>
+                <p class="text-sm text-gray-500 mb-3">
+                  Aşağıdaki her bir başlık, ayrı bir blog yazısı olarak
+                  planlanacaktır.
                 </p>
+                <ol>
+                  <li>aşil tendon ameliyatı olanların yorumları</li>
+                  <li>topuk dikeni iğnesi yaptıranlar yorumlar</li>
+                  <li>topuk dikeni ameliyatı olanların yorumları</li>
+                  <li>topuk dikeni lazer tedavisi yorumları</li>
+                  <li>halluks valgus ameliyat sonrası yorumları</li>
+                  <li>halluks valgus gece ateli işe yarıyor mu</li>
+                  <li>halluks rigidus ameliyatı olanlar</li>
+                  <li>halluks rigidus ameliyatı sonrası iyileşme süreci</li>
+                  <li>ayak baş parmağı neden ağrır - kireçlenme</li>
+                  <li>morton nöroma hasta yorumları - ameliyatı olanlar</li>
+                  <li>morton nöroma tedavi edilmezse ne olur</li>
+                  <li>morton nöroma kortizon iğnesi tedavisi</li>
+                  <li>parmak uzatma ameliyatı</li>
+                  <li>ayak numarası küçültme ameliyatı</li>
+                </ol>
               </div>
             </div>
-            <p class="mt-8 text-gray-600 italic max-w-3xl mx-auto">
-              Bu yaklaşım, sitemizin kısa sürede doğru kitleye ulaşmasını ve
-              dijitalde güçlü bir başlangıç yapmasını sağlayacaktır.
-            </p>
+
+            <div class="plan-card">
+              <div class="p-6 card-content">
+                <h3 class="text-2xl font-bold mb-4 text-[#F85A3E]">
+                  Enjeksiyon Tedavileri
+                </h3>
+                <h4 class="font-semibold text-lg mt-6 mb-2">
+                  📝 Planlanacak Blog Yazıları
+                </h4>
+                <p class="text-sm text-gray-500 mb-3">
+                  Bu genel kategoride, her bir blog başlığı aynı zamanda
+                  hedeflenen anahtar kelime görevini görecektir. Aşağıdaki her
+                  bir başlık, ayrı bir blog yazısı olarak planlanacaktır.
+                </p>
+                <ol>
+                  <li>dize hyaluronik asit enjeksiyonu yaptıranlar</li>
+                  <li>eklem içi enjeksiyon yaptıranlar</li>
+                  <li>diz eklem içi enjeksiyon nasıl yapılır</li>
+                  <li>dize kök hücre yaptıranların yorumları</li>
+                  <li>menisküs kök hücre tedavisi yorumları</li>
+                  <li>prp diz tedavisi yaptiranlar yorumları</li>
+                  <li>dize yapılan prp sonrası dikkat edilmesi gerekenler</li>
+                  <li>omuza prp yaptıranların yorumları</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="plan-card">
+              <div class="p-6 card-content">
+                <h3 class="text-2xl font-bold mb-4 text-[#00A6A6]">
+                  Çocuk Ortopedisi
+                </h3>
+                <h4 class="font-semibold text-lg mb-2">
+                  🔑 Hedef Anahtar Kelimeler
+                </h4>
+                <p class="text-sm text-gray-500 mb-3">
+                  Kategori sayfasına, bu anahtar kelimeleri hedefleyen SEO
+                  uyumlu, kapsamlı bir hizmet açıklaması içeriği girilecektir.
+                </p>
+                <ul>
+                  <li class="keyword-item">çocuk ortopedi uzmanı</li>
+                  <li class="keyword-item">çocuk ortopedisti İstanbul</li>
+                  <li class="keyword-item">
+                    çocuklarda - bebeklerde içe basma tedavisi
+                  </li>
+                </ul>
+                <h4 class="font-semibold text-lg mt-6 mb-2">
+                  📝 Planlanacak Blog Yazıları
+                </h4>
+                <p class="text-sm text-gray-500 mb-3">
+                  Aşağıdaki her bir başlık, ayrı bir blog yazısı olarak
+                  planlanacaktır.
+                </p>
+                <ol>
+                  <li>çocuğun düz taban tedavisi</li>
+                  <li>bebeklerde düz taban nasıl anlaşılır - belirtileri</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="plan-card">
+              <div class="p-6 card-content">
+                <h3 class="text-2xl font-bold mb-4 text-[#E2A0FF]">Diz</h3>
+                <h4 class="font-semibold text-lg mt-6 mb-2">
+                  📝 Planlanacak Blog Yazıları
+                </h4>
+                <p class="text-sm text-gray-500 mb-3">
+                  Aşağıdaki her bir başlık, ayrı bir blog yazısı olarak
+                  planlanacaktır.
+                </p>
+                <ol>
+                  <li>robotik diz protezi ameliyatı fiyatı istanbul</li>
+                  <li>diz protezi fizik tedavi hareketleri</li>
+                  <li>diz protezi ameliyatı sonrası hasta yorumları</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="plan-card">
+              <div class="p-6 card-content">
+                <h3 class="text-2xl font-bold mb-4 text-[#4BC0C0]">Kol</h3>
+                <h4 class="font-semibold text-lg mt-6 mb-2">
+                  📝 Planlanacak Blog Yazıları
+                </h4>
+                <p class="text-sm text-gray-500 mb-3">
+                  Aşağıdaki her bir başlık, ayrı bir blog yazısı olarak
+                  planlanacaktır.
+                </p>
+                <ol>
+                  <li>tenisçi dirseği iğnesi</li>
+                  <li>tetik parmak iğne ile gevşetme</li>
+                  <li>tetik parmak ameliyatı olanların yorumları</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="plan-card">
+              <div class="p-6 card-content">
+                <h3 class="text-2xl font-bold mb-4 text-[#FFB174]">Omuz</h3>
+                <h4 class="font-semibold text-lg mt-6 mb-2">
+                  📝 Planlanacak Blog Yazıları
+                </h4>
+                <p class="text-sm text-gray-500 mb-3">
+                  Aşağıdaki her bir başlık, ayrı bir blog yazısı olarak
+                  planlanacaktır.
+                </p>
+                <ol>
+                  <li>omuz kalsifik tendinit tedavisi</li>
+                  <li>omuz sıkışma sendromu</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="plan-card">
+              <div class="p-6 card-content">
+                <h3 class="text-2xl font-bold mb-4 text-[#FF8A7A]">Kalça</h3>
+                <h4 class="font-semibold text-lg mt-6 mb-2">
+                  📝 Planlanacak Blog Yazıları
+                </h4>
+                <p class="text-sm text-gray-500 mb-3">
+                  Aşağıdaki her bir başlık, ayrı bir blog yazısı olarak
+                  planlanacaktır.
+                </p>
+                <ol>
+                  <li>kalça protezi ameliyatı olanların yorumları - sonrası</li>
+                </ol>
+              </div>
+            </div>
           </div>
+        </section>
+      </main>
+
+      <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 py-6 text-center">
+          <p>&copy; 2025 Op. Dr. Gökçe Mık. Tüm hakları saklıdır.</p>
+          <p class="text-sm text-gray-400 mt-1">
+            Bu SEO İçerik Strateji Raporu, Nova Vita Health tarafından
+            hazırlanmıştır.
+          </p>
         </div>
-      </section>
-
-      <section class="mb-16 bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-2xl font-bold text-center mb-4">
-          Planlanacak İçerik Yoğunluğu
-        </h2>
-        <p class="text-center text-gray-600 mb-6 max-w-3xl mx-auto">
-          Aşağıdaki grafik, oluşturulacak blog yazılarının kategorilere göre
-          dağılımını göstermektedir. Bu, hangi uzmanlık alanlarının öncelikli
-          olarak içerikle destekleneceğini görselleştirmektedir.
-        </p>
-        <div class="chart-container max-w-4xl mx-auto">
-          <canvas id="comparisonChart"></canvas>
-        </div>
-      </section>
-
-      <section class="mb-16 bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-2xl font-bold text-center mb-8">
-          Görsel Site Haritası (Zihin Haritası)
-        </h2>
-        <div class="mindmap-container">
-          <div class="mindmap-center">gokcemik.com</div>
-          <!-- First Row of Categories -->
-          <div class="mindmap-row">
-            <div class="branch-column">
-              <div class="category-node" style="background-color: #f9a03f">
-                Ayak ve Ayak Bileği
-              </div>
-              <div class="posts-list">
-                <div class="post-node">aşil tendon ameliyatı yorumları</div>
-                <div class="post-node">topuk dikeni iğnesi yorumları</div>
-                <div class="post-node">halluks valgus sonrası yorumlar</div>
-              </div>
-            </div>
-            <div class="branch-column">
-              <div class="category-node" style="background-color: #f85a3e">
-                Enjeksiyon Tedavileri
-              </div>
-              <div class="posts-list">
-                <div class="post-node">dize hyaluronik asit enjeksiyonu</div>
-                <div class="post-node">dize kök hücre yorumları</div>
-                <div class="post-node">prp diz tedavisi yorumları</div>
-              </div>
-            </div>
-            <div class="branch-column">
-              <div class="category-node" style="background-color: #00a6a6">
-                Çocuk Ortopedisi
-              </div>
-              <div class="posts-list">
-                <div class="post-node">çocuğun düz taban tedavisi</div>
-                <div class="post-node">
-                  bebeklerde düz taban nasıl anlaşılır
-                </div>
-              </div>
-            </div>
-            <div class="branch-column">
-              <div class="category-node" style="background-color: #e2a0ff">
-                Diz
-              </div>
-              <div class="posts-list">
-                <div class="post-node">
-                  robotik diz protezi ameliyatı fiyatı
-                </div>
-                <div class="post-node">
-                  diz protezi fizik tedavi hareketleri
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Second Row of Categories -->
-          <div class="mindmap-row">
-            <div class="branch-column">
-              <div class="category-node" style="background-color: #4bc0c0">
-                Kol
-              </div>
-              <div class="posts-list">
-                <div class="post-node">tenisçi dirseği iğnesi</div>
-                <div class="post-node">tetik parmak ameliyatı yorumları</div>
-              </div>
-            </div>
-            <div class="branch-column">
-              <div class="category-node" style="background-color: #ffb174">
-                Omuz
-              </div>
-              <div class="posts-list">
-                <div class="post-node">omuz kalsifik tendinit tedavisi</div>
-                <div class="post-node">omuz sıkışma sendromu</div>
-              </div>
-            </div>
-            <div class="branch-column">
-              <div class="category-node" style="background-color: #ff8a7a">
-                Kalça
-              </div>
-              <div class="posts-list">
-                <div class="post-node">kalça protezi ameliyatı yorumları</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="text-3xl font-bold text-center mb-8">
-          Kategori ve Blog İçerik Planı (Detaylı)
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          <div class="plan-card">
-            <div class="p-6 card-content">
-              <h3 class="text-2xl font-bold mb-4 text-[#F9A03F]">
-                Ayak ve Ayak Bileği
-              </h3>
-              <h4 class="font-semibold text-lg mb-2">
-                🔑 Hedef Anahtar Kelimeler
-              </h4>
-              <p class="text-sm text-gray-500 mb-3">
-                Kategori sayfasına, bu anahtar kelimeleri hedefleyen SEO uyumlu,
-                kapsamlı bir hizmet açıklaması içeriği girilecektir.
-              </p>
-              <ul>
-                <li class="keyword-item">ayak bileği cerrahisi uzmanı</li>
-                <li class="keyword-item">ayak ortopedisi uzmanı</li>
-                <li class="keyword-item">İstanbul ayak cerrahisi uzmanı</li>
-                <li class="keyword-item">ayak bileği ameliyatı fiyatı</li>
-                <li class="keyword-item">ayak parmak ameliyatı yapan doktor</li>
-              </ul>
-              <h4 class="font-semibold text-lg mt-6 mb-2">
-                📝 Planlanacak Blog Yazıları
-              </h4>
-              <p class="text-sm text-gray-500 mb-3">
-                Aşağıdaki her bir başlık, ayrı bir blog yazısı olarak
-                planlanacaktır.
-              </p>
-              <ol>
-                <li>aşil tendon ameliyatı olanların yorumları</li>
-                <li>topuk dikeni iğnesi yaptıranlar yorumlar</li>
-                <li>topuk dikeni ameliyatı olanların yorumları</li>
-                <li>topuk dikeni lazer tedavisi yorumları</li>
-                <li>halluks valgus ameliyat sonrası yorumları</li>
-                <li>halluks valgus gece ateli işe yarıyor mu</li>
-                <li>halluks rigidus ameliyatı olanlar</li>
-                <li>halluks rigidus ameliyatı sonrası iyileşme süreci</li>
-                <li>ayak baş parmağı neden ağrır - kireçlenme</li>
-                <li>morton nöroma hasta yorumları - ameliyatı olanlar</li>
-                <li>morton nöroma tedavi edilmezse ne olur</li>
-                <li>morton nöroma kortizon iğnesi tedavisi</li>
-                <li>parmak uzatma ameliyatı</li>
-                <li>ayak numarası küçültme ameliyatı</li>
-              </ol>
-            </div>
-          </div>
-
-          <div class="plan-card">
-            <div class="p-6 card-content">
-              <h3 class="text-2xl font-bold mb-4 text-[#F85A3E]">
-                Enjeksiyon Tedavileri
-              </h3>
-              <h4 class="font-semibold text-lg mt-6 mb-2">
-                📝 Planlanacak Blog Yazıları
-              </h4>
-              <p class="text-sm text-gray-500 mb-3">
-                Bu genel kategoride, her bir blog başlığı aynı zamanda
-                hedeflenen anahtar kelime görevini görecektir. Aşağıdaki her bir
-                başlık, ayrı bir blog yazısı olarak planlanacaktır.
-              </p>
-              <ol>
-                <li>dize hyaluronik asit enjeksiyonu yaptıranlar</li>
-                <li>eklem içi enjeksiyon yaptıranlar</li>
-                <li>diz eklem içi enjeksiyon nasıl yapılır</li>
-                <li>dize kök hücre yaptıranların yorumları</li>
-                <li>menisküs kök hücre tedavisi yorumları</li>
-                <li>prp diz tedavisi yaptiranlar yorumları</li>
-                <li>dize yapılan prp sonrası dikkat edilmesi gerekenler</li>
-                <li>omuza prp yaptıranların yorumları</li>
-              </ol>
-            </div>
-          </div>
-
-          <div class="plan-card">
-            <div class="p-6 card-content">
-              <h3 class="text-2xl font-bold mb-4 text-[#00A6A6]">
-                Çocuk Ortopedisi
-              </h3>
-              <h4 class="font-semibold text-lg mb-2">
-                🔑 Hedef Anahtar Kelimeler
-              </h4>
-              <p class="text-sm text-gray-500 mb-3">
-                Kategori sayfasına, bu anahtar kelimeleri hedefleyen SEO uyumlu,
-                kapsamlı bir hizmet açıklaması içeriği girilecektir.
-              </p>
-              <ul>
-                <li class="keyword-item">çocuk ortopedi uzmanı</li>
-                <li class="keyword-item">çocuk ortopedisti İstanbul</li>
-                <li class="keyword-item">
-                  çocuklarda - bebeklerde içe basma tedavisi
-                </li>
-              </ul>
-              <h4 class="font-semibold text-lg mt-6 mb-2">
-                📝 Planlanacak Blog Yazıları
-              </h4>
-              <p class="text-sm text-gray-500 mb-3">
-                Aşağıdaki her bir başlık, ayrı bir blog yazısı olarak
-                planlanacaktır.
-              </p>
-              <ol>
-                <li>çocuğun düz taban tedavisi</li>
-                <li>bebeklerde düz taban nasıl anlaşılır - belirtileri</li>
-              </ol>
-            </div>
-          </div>
-
-          <div class="plan-card">
-            <div class="p-6 card-content">
-              <h3 class="text-2xl font-bold mb-4 text-[#E2A0FF]">Diz</h3>
-              <h4 class="font-semibold text-lg mt-6 mb-2">
-                📝 Planlanacak Blog Yazıları
-              </h4>
-              <p class="text-sm text-gray-500 mb-3">
-                Aşağıdaki her bir başlık, ayrı bir blog yazısı olarak
-                planlanacaktır.
-              </p>
-              <ol>
-                <li>robotik diz protezi ameliyatı fiyatı istanbul</li>
-                <li>diz protezi fizik tedavi hareketleri</li>
-                <li>diz protezi ameliyatı sonrası hasta yorumları</li>
-              </ol>
-            </div>
-          </div>
-
-          <div class="plan-card">
-            <div class="p-6 card-content">
-              <h3 class="text-2xl font-bold mb-4 text-[#4BC0C0]">Kol</h3>
-              <h4 class="font-semibold text-lg mt-6 mb-2">
-                📝 Planlanacak Blog Yazıları
-              </h4>
-              <p class="text-sm text-gray-500 mb-3">
-                Aşağıdaki her bir başlık, ayrı bir blog yazısı olarak
-                planlanacaktır.
-              </p>
-              <ol>
-                <li>tenisçi dirseği iğnesi</li>
-                <li>tetik parmak iğne ile gevşetme</li>
-                <li>tetik parmak ameliyatı olanların yorumları</li>
-              </ol>
-            </div>
-          </div>
-
-          <div class="plan-card">
-            <div class="p-6 card-content">
-              <h3 class="text-2xl font-bold mb-4 text-[#FFB174]">Omuz</h3>
-              <h4 class="font-semibold text-lg mt-6 mb-2">
-                📝 Planlanacak Blog Yazıları
-              </h4>
-              <p class="text-sm text-gray-500 mb-3">
-                Aşağıdaki her bir başlık, ayrı bir blog yazısı olarak
-                planlanacaktır.
-              </p>
-              <ol>
-                <li>omuz kalsifik tendinit tedavisi</li>
-                <li>omuz sıkışma sendromu</li>
-              </ol>
-            </div>
-          </div>
-
-          <div class="plan-card">
-            <div class="p-6 card-content">
-              <h3 class="text-2xl font-bold mb-4 text-[#FF8A7A]">Kalça</h3>
-              <h4 class="font-semibold text-lg mt-6 mb-2">
-                📝 Planlanacak Blog Yazıları
-              </h4>
-              <p class="text-sm text-gray-500 mb-3">
-                Aşağıdaki her bir başlık, ayrı bir blog yazısı olarak
-                planlanacaktır.
-              </p>
-              <ol>
-                <li>kalça protezi ameliyatı olanların yorumları - sonrası</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="bg-gray-800 text-white mt-12">
-      <div class="container mx-auto px-4 py-6 text-center">
-        <p>&copy; 2025 Op. Dr. Gökçe Mık. Tüm hakları saklıdır.</p>
-        <p class="text-sm text-gray-400 mt-1">
-          Bu SEO İçerik Strateji Raporu, Nova Vita Health tarafından
-          hazırlanmıştır.
-        </p>
-      </div>
-    </footer>
+      </footer>
+    </div>
 
     <script>
-      const categoryData = {
-        labels: [
-          "Ayak ve Ayak Bileği",
-          "Enjeksiyon Tedavileri",
-          "Diz",
-          "Kol",
-          "Çocuk Ortopedisi",
-          "Omuz",
-          "Kalça",
-        ],
-        values: [14, 8, 3, 3, 2, 2, 1],
-      };
+      document.addEventListener("DOMContentLoaded", () => {
+        const loginScreen = document.getElementById("login-screen");
+        const reportContent = document.getElementById("report-content");
+        const loginForm = document.getElementById("login-form");
+        const passwordInput = document.getElementById("password");
+        let chartsInitialized = false;
 
-      const colors = {
-        blue: "#00A6A6",
-        purple: "#E2A0FF",
-        orange: "#F9A03F",
-        red: "#F85A3E",
-        lightBlue: "rgba(0, 166, 166, 0.6)",
-        lightOrange: "rgba(249, 160, 63, 0.6)",
-        lightRed: "rgba(248, 90, 62, 0.6)",
-        lightPurple: "rgba(226, 160, 255, 0.6)",
-        c1: "rgba(75, 192, 192, 0.6)",
-        c2: "rgba(255, 177, 116, 0.6)",
-        c3: "rgba(255, 138, 122, 0.6)",
-      };
+        loginForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          if (passwordInput.value === "2025") {
+            loginScreen.classList.add("opacity-0", "pointer-events-none");
+            reportContent.classList.remove("opacity-0", "pointer-events-none");
 
-      const ctxComparison = document
-        .getElementById("comparisonChart")
-        .getContext("2d");
-      new Chart(ctxComparison, {
-        type: "bar",
-        data: {
-          labels: categoryData.labels,
-          datasets: [
-            {
-              label: "Planlanan Makale Sayısı",
-              data: categoryData.values,
-              backgroundColor: [
-                colors.lightOrange,
-                colors.lightRed,
-                colors.lightPurple,
-                colors.c1,
-                colors.lightBlue,
-                colors.c2,
-                colors.c3,
+            if (!chartsInitialized) {
+              initializeCharts();
+              chartsInitialized = true;
+            }
+          } else {
+            passwordInput.classList.add("shake");
+            passwordInput.value = "";
+            passwordInput.placeholder = "Hatalı Şifre";
+            passwordInput.classList.add("placeholder-red-500");
+            setTimeout(() => {
+              passwordInput.classList.remove("shake");
+              passwordInput.placeholder = "Şifreyi Giriniz";
+              passwordInput.classList.remove("placeholder-red-500");
+            }, 1000);
+          }
+        });
+
+        function initializeCharts() {
+          const categoryData = {
+            labels: [
+              "Ayak ve Ayak Bileği",
+              "Enjeksiyon Tedavileri",
+              "Diz",
+              "Kol",
+              "Çocuk Ortopedisi",
+              "Omuz",
+              "Kalça",
+            ],
+            values: [14, 8, 3, 3, 2, 2, 1],
+          };
+
+          const colors = {
+            blue: "#00A6A6",
+            purple: "#E2A0FF",
+            orange: "#F9A03F",
+            red: "#F85A3E",
+            lightBlue: "rgba(0, 166, 166, 0.6)",
+            lightOrange: "rgba(249, 160, 63, 0.6)",
+            lightRed: "rgba(248, 90, 62, 0.6)",
+            lightPurple: "rgba(226, 160, 255, 0.6)",
+            c1: "rgba(75, 192, 192, 0.6)",
+            c2: "rgba(255, 177, 116, 0.6)",
+            c3: "rgba(255, 138, 122, 0.6)",
+          };
+
+          const ctxComparison = document
+            .getElementById("comparisonChart")
+            .getContext("2d");
+          new Chart(ctxComparison, {
+            type: "bar",
+            data: {
+              labels: categoryData.labels,
+              datasets: [
+                {
+                  label: "Planlanan Makale Sayısı",
+                  data: categoryData.values,
+                  backgroundColor: [
+                    colors.lightOrange,
+                    colors.lightRed,
+                    colors.lightPurple,
+                    colors.c1,
+                    colors.lightBlue,
+                    colors.c2,
+                    colors.c3,
+                  ],
+                  borderColor: [
+                    colors.orange,
+                    colors.red,
+                    colors.purple,
+                    "#4BC0C0",
+                    colors.blue,
+                    "#FFB174",
+                    "#FF8A7A",
+                  ],
+                  borderWidth: 2,
+                  borderRadius: 5,
+                },
               ],
-              borderColor: [
-                colors.orange,
-                colors.red,
-                colors.purple,
-                "#4BC0C0",
-                colors.blue,
-                "#FFB174",
-                "#FF8A7A",
-              ],
-              borderWidth: 2,
-              borderRadius: 5,
             },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              beginAtZero: true,
-              ticks: {
-                stepSize: 2,
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  ticks: {
+                    stepSize: 2,
+                  },
+                },
+              },
+              plugins: {
+                legend: {
+                  display: false,
+                },
               },
             },
-          },
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-        },
+          });
+        }
       });
     </script>
   </body>
 </html>
-�
