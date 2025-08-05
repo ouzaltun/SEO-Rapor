@@ -59,103 +59,96 @@
         margin-bottom: 0.75rem;
       }
       .keyword-item::before {
-        content: "🔑";
+        content: "�";
         position: absolute;
         left: -1rem;
         top: 5px;
         font-size: 0.8rem;
       }
-      .mindmap {
+      /* Mind Map Styles */
+      .mindmap-container {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        padding: 2rem 0;
-        flex-wrap: wrap;
+        width: 100%;
+        overflow-x: auto;
+        padding: 2rem 1rem;
       }
       .mindmap-center {
-        padding: 1.5rem 2.5rem;
+        padding: 1rem 2rem;
         background-color: #00a6a6;
         color: white;
         border-radius: 50px;
-        font-weight: 900;
-        font-size: 1.5rem;
-        box-shadow: 0 10px 20px rgba(0, 166, 166, 0.2);
-        z-index: 10;
+        font-weight: 700;
+        font-size: 1.25rem;
+        box-shadow: 0 4px 14px rgba(0, 166, 166, 0.25);
+        margin-bottom: 2.5rem;
         flex-shrink: 0;
-        margin: 1rem;
       }
-      .mindmap-branches {
+      .mindmap-row {
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
-        gap: 2rem;
-        max-width: 1200px;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        width: 100%;
+        margin-bottom: 2.5rem;
+      }
+      .branch-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
         position: relative;
       }
-      .branch {
+      .branch-column::before {
+        content: "";
+        position: absolute;
+        top: -1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 1.5rem;
+        background-color: #cbd5e1;
+      }
+      .category-node {
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        color: white;
+        text-align: center;
+        min-width: 220px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      .posts-list {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 1rem;
         position: relative;
       }
-      .branch-category {
-        padding: 0.75rem 1.5rem;
-        border-radius: 8px;
-        font-weight: 700;
-        color: white;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        min-width: 200px;
-      }
-      .branch-posts {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        align-items: center;
-        position: relative;
-        padding-top: 1rem;
-      }
-      .branch-posts::before {
+      .posts-list::before {
         content: "";
         position: absolute;
         top: 0;
         left: 50%;
         transform: translateX(-50%);
         width: 2px;
-        height: 1rem;
+        height: 100%;
         background-color: #cbd5e1;
+        z-index: -1;
       }
       .post-node {
         padding: 0.5rem 1rem;
         background-color: #f8fafc;
-        border: 1px solid #e5e7eb;
-        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
         font-size: 0.875rem;
         text-align: center;
-        width: 220px;
+        width: 240px;
         position: relative;
       }
       .post-node::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: -1rem;
-        transform: translateY(-50%);
-        width: 1rem;
-        height: 2px;
-        background-color: #cbd5e1;
-      }
-      .branch-posts::after {
-        content: "";
-        position: absolute;
-        top: 1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 2px;
-        height: calc(100% - 1rem);
-        background-color: #cbd5e1;
-        z-index: -1;
+        display: none;
       }
     </style>
   </head>
@@ -227,6 +220,7 @@
           </div>
         </div>
       </section>
+
       <section class="mb-16 bg-white p-6 rounded-lg shadow-md">
         <h2 class="text-2xl font-bold text-center mb-4">
           Planlanacak İçerik Yoğunluğu
@@ -245,97 +239,81 @@
         <h2 class="text-2xl font-bold text-center mb-8">
           Görsel Site Haritası (Zihin Haritası)
         </h2>
-        <div class="mindmap">
+        <div class="mindmap-container">
           <div class="mindmap-center">gokcemik.com</div>
-        </div>
-        <div class="mindmap-branches">
-          <div class="branch">
-            <div class="branch-category" style="background-color: #f9a03f">
-              Ayak ve Ayak Bileği
-            </div>
-            <div class="branch-posts">
-              <div class="post-node">
-                aşil tendon ameliyatı olanların yorumları
+          <!-- First Row of Categories -->
+          <div class="mindmap-row">
+            <div class="branch-column">
+              <div class="category-node" style="background-color: #f9a03f">
+                Ayak ve Ayak Bileği
               </div>
-              <div class="post-node">
-                topuk dikeni iğnesi yaptıranlar yorumlar
+              <div class="posts-list">
+                <div class="post-node">aşil tendon ameliyatı yorumları</div>
+                <div class="post-node">topuk dikeni iğnesi yorumları</div>
+                <div class="post-node">halluks valgus sonrası yorumlar</div>
               </div>
-              <div class="post-node">
-                topuk dikeni ameliyatı olanların yorumları
+            </div>
+            <div class="branch-column">
+              <div class="category-node" style="background-color: #f85a3e">
+                Enjeksiyon Tedavileri
               </div>
-              <div class="post-node">
-                halluks valgus ameliyat sonrası yorumları
+              <div class="posts-list">
+                <div class="post-node">dize hyaluronik asit enjeksiyonu</div>
+                <div class="post-node">dize kök hücre yorumları</div>
+                <div class="post-node">prp diz tedavisi yorumları</div>
               </div>
-              <div class="post-node">morton nöroma hasta yorumları</div>
-              <div class="post-node">parmak uzatma ameliyatı</div>
             </div>
-          </div>
-          <div class="branch">
-            <div class="branch-category" style="background-color: #f85a3e">
-              Enjeksiyon Tedavileri
-            </div>
-            <div class="branch-posts">
-              <div class="post-node">dize hyaluronik asit enjeksiyonu</div>
-              <div class="post-node">eklem içi enjeksiyon yaptıranlar</div>
-              <div class="post-node">
-                dize kök hücre yaptıranların yorumları
+            <div class="branch-column">
+              <div class="category-node" style="background-color: #00a6a6">
+                Çocuk Ortopedisi
               </div>
-              <div class="post-node">menisküs kök hücre tedavisi yorumları</div>
-              <div class="post-node">
-                prp diz tedavisi yaptiranlar yorumları
+              <div class="posts-list">
+                <div class="post-node">çocuğun düz taban tedavisi</div>
+                <div class="post-node">
+                  bebeklerde düz taban nasıl anlaşılır
+                </div>
               </div>
-              <div class="post-node">omuza prp yaptıranların yorumları</div>
             </div>
-          </div>
-          <div class="branch">
-            <div class="branch-category" style="background-color: #00a6a6">
-              Çocuk Ortopedisi
-            </div>
-            <div class="branch-posts">
-              <div class="post-node">çocuğun düz taban tedavisi</div>
-              <div class="post-node">bebeklerde düz taban nasıl anlaşılır</div>
-            </div>
-          </div>
-          <div class="branch">
-            <div class="branch-category" style="background-color: #e2a0ff">
-              Diz
-            </div>
-            <div class="branch-posts">
-              <div class="post-node">robotik diz protezi ameliyatı fiyatı</div>
-              <div class="post-node">diz protezi fizik tedavi hareketleri</div>
-              <div class="post-node">
-                diz protezi ameliyatı sonrası yorumlar
+            <div class="branch-column">
+              <div class="category-node" style="background-color: #e2a0ff">
+                Diz
+              </div>
+              <div class="posts-list">
+                <div class="post-node">
+                  robotik diz protezi ameliyatı fiyatı
+                </div>
+                <div class="post-node">
+                  diz protezi fizik tedavi hareketleri
+                </div>
               </div>
             </div>
           </div>
-          <div class="branch">
-            <div class="branch-category" style="background-color: #4bc0c0">
-              Kol
-            </div>
-            <div class="branch-posts">
-              <div class="post-node">tenisçi dirseği iğnesi</div>
-              <div class="post-node">tetik parmak iğne ile gevşetme</div>
-              <div class="post-node">
-                tetik parmak ameliyatı olanların yorumları
+          <!-- Second Row of Categories -->
+          <div class="mindmap-row">
+            <div class="branch-column">
+              <div class="category-node" style="background-color: #4bc0c0">
+                Kol
+              </div>
+              <div class="posts-list">
+                <div class="post-node">tenisçi dirseği iğnesi</div>
+                <div class="post-node">tetik parmak ameliyatı yorumları</div>
               </div>
             </div>
-          </div>
-          <div class="branch">
-            <div class="branch-category" style="background-color: #ffb174">
-              Omuz
+            <div class="branch-column">
+              <div class="category-node" style="background-color: #ffb174">
+                Omuz
+              </div>
+              <div class="posts-list">
+                <div class="post-node">omuz kalsifik tendinit tedavisi</div>
+                <div class="post-node">omuz sıkışma sendromu</div>
+              </div>
             </div>
-            <div class="branch-posts">
-              <div class="post-node">omuz kalsifik tendinit tedavisi</div>
-              <div class="post-node">omuz sıkışma sendromu</div>
-            </div>
-          </div>
-          <div class="branch">
-            <div class="branch-category" style="background-color: #ff8a7a">
-              Kalça
-            </div>
-            <div class="branch-posts">
-              <div class="post-node">
-                kalça protezi ameliyatı olanların yorumları
+            <div class="branch-column">
+              <div class="category-node" style="background-color: #ff8a7a">
+                Kalça
+              </div>
+              <div class="posts-list">
+                <div class="post-node">kalça protezi ameliyatı yorumları</div>
               </div>
             </div>
           </div>
@@ -616,3 +594,4 @@
     </script>
   </body>
 </html>
+�
