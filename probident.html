@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kapsamlı SEO Denetim Raporu - probident.com.tr</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8f9fa;
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        height: 300px;
+      }
+      @media (min-width: 768px) {
+        .chart-container {
+          height: 350px;
+        }
+      }
+      .checklist-item {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: #ffebeb;
+        color: #c53030;
+        margin-bottom: 0.5rem;
+      }
+      .checklist-item::before {
+        content: "✗";
+        font-weight: bold;
+        margin-right: 0.75rem;
+        font-size: 1.25rem;
+      }
+      @keyframes shake {
+        10%,
+        90% {
+          transform: translate3d(-1px, 0, 0);
+        }
+        20%,
+        80% {
+          transform: translate3d(2px, 0, 0);
+        }
+        30%,
+        50%,
+        70% {
+          transform: translate3d(-4px, 0, 0);
+        }
+        40%,
+        60% {
+          transform: translate3d(4px, 0, 0);
+        }
+      }
+      .animate-shake {
+        animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <div
+      id="login-screen"
+      class="fixed inset-0 z-50 bg-sky-50 flex items-center justify-center p-4 transition-opacity duration-700 ease-in-out"
+    >
+      <div class="w-full max-w-sm mx-auto">
+        <div class="bg-white rounded-2xl shadow-xl p-8 text-center">
+          <img
+            src="https://i.ibb.co/0VGzy6Rj/image.png"
+            alt="Probident Logo"
+            class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-sky-200 shadow-md object-cover"
+            onerror="this.onerror=null;this.src='https://placehold.co/96x96/0582CA/FFFFFF?text=P'"
+          />
+          <h2 class="text-xl font-bold text-gray-700">Probident Yöneticisi</h2>
+          <p class="text-sm text-gray-500 mb-6">SEO Sağlık Raporu</p>
+          <form id="login-form">
+            <label for="password" class="sr-only">Şifre</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Şifrenizi Giriniz"
+              class="w-full px-4 py-3 text-center border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+            />
+            <p id="error-message" class="text-red-500 text-sm mt-2 h-5"></p>
+            <button
+              type="submit"
+              class="w-full bg-[#0582CA] text-white font-bold py-3 px-4 rounded-lg mt-4 hover:bg-[#006494] transition-colors duration-300"
+            >
+              Raporu Görüntüle
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="report-content"
+      class="opacity-0 transition-opacity duration-700 ease-in-out"
+    >
+      <div class="container mx-auto p-4 md:p-8">
+        <header class="bg-white p-6 rounded-2xl shadow-lg mb-12">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center gap-4"
+          >
+            <div class="text-center md:text-left">
+              <h1 class="text-3xl md:text-4xl font-bold text-[#006494]">
+                Kapsamlı SEO Sağlık Karnesi
+              </h1>
+              <p class="text-lg text-[#0582CA]">probident.com.tr</p>
+            </div>
+            <div class="bg-sky-100 p-4 rounded-lg text-center">
+              <div class="text-sm text-sky-700 font-semibold">Rapor Tarihi</div>
+              <div class="text-lg text-sky-800 font-bold">Eylül 2025</div>
+            </div>
+          </div>
+        </header>
+
+        <main class="space-y-12">
+          <section
+            id="expert-analysis"
+            class="bg-white p-8 rounded-2xl shadow-lg"
+          >
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-8">
+              Uzman Analizi: Fırsatlar ve Stratejik Tavsiyeler
+            </h2>
+            <div class="max-w-4xl mx-auto mb-8">
+              <div
+                class="rounded-lg shadow-md overflow-hidden border border-gray-200 bg-gray-100"
+              >
+                <div class="bg-gray-200 p-2 flex items-center gap-1.5">
+                  <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                  <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                  <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                </div>
+                <img
+                  src="https://i.ibb.co/5CkS8VT/image.png"
+                  alt="probident.com.tr web sitesi ekran görüntüsü"
+                  class="w-full h-auto object-cover"
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFFFFF/CCCCCC?text=Site+G%C3%B6r%C3%BCn%C3%BCm%C3%BC+Y%C3%BCklenemedi';"
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                  Teknik Hatalar ve Öneriler
+                </h3>
+                <div class="space-y-4">
+                  <div class="bg-red-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-red-800">
+                      Kritik Hata: Kullanıcı Deneyimi ve Kırık Linkler
+                    </h4>
+                    <p class="text-sm text-red-700 mt-1">
+                      Sitede tespit edilen 8 kırık iç link, kullanıcıları ve
+                      arama motorlarını "sayfa bulunamadı" hatalarına
+                      yönlendirerek hem hasta deneyimini zedeler hem de
+                      sitenizin Google nezdindeki otoritesini düşürür. Bu durum,
+                      değerli ziyaretçilerin sitenizi terk etmesine neden
+                      olabilir.
+                    </p>
+                    <p class="text-sm font-bold text-red-900 mt-2">
+                      Tavsiye: Tüm kırık linkler acilen düzeltilmeli ve site içi
+                      link yapısı düzenli olarak kontrol edilmelidir.
+                    </p>
+                  </div>
+                  <div class="bg-yellow-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-yellow-800">
+                      Orta Öncelikli Hata: Hız ve İçerik Zafiyetleri
+                    </h4>
+                    <p class="text-sm text-yellow-700 mt-1">
+                      Yüzlerce resimde alt metinlerin eksik olması, 219 adet
+                      optimize edilmemiş kod dosyası ve 68 sayfada meta
+                      açıklamasının bulunmaması, sitenin hem hızını hem de arama
+                      motoru görünürlüğünü olumsuz etkilemektedir. Bu
+                      eksiklikler, potansiyel hastaların sizi bulmasını
+                      zorlaştırır.
+                    </p>
+                    <p class="text-sm font-bold text-yellow-900 mt-2">
+                      Tavsiye: Kod dosyaları sıkıştırılmalı, tüm görsellere
+                      açıklayıcı alt metinler eklenmeli ve eksik meta
+                      açıklamaları tamamlanmalıdır.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                  SEO ve Kullanıcı Deneyimi (UX)
+                </h3>
+                <p class="text-gray-600 mb-6">
+                  İyi bir SEO stratejisi, temelinde kullanıcıya pürüzsüz bir
+                  deneyim sunmayı hedefler. Google, ziyaretçilerini memnun eden,
+                  hızlı açılan ve aradıkları bilgiye kolayca ulaştıran siteleri
+                  önceliklendirir. Bu raporda belirtilen teknik iyileştirmeler,
+                  sadece arama motoru sıralamalarınızı yükseltmekle kalmayacak,
+                  aynı zamanda dijital kliniğinizin kapısından giren her
+                  ziyaretçinin memnuniyetini artıracaktır.
+                </p>
+
+                <div
+                  class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500"
+                >
+                  <h4 class="text-xl font-bold text-green-800 mb-2">
+                    ✅ Pozitif Yanlar ve Güçlü Temel
+                  </h4>
+                  <p class="text-sm text-green-700">
+                    Tespit edilen sorunlara rağmen, sitenin sağlam bir altyapısı
+                    ve önemli bir SEO potansiyeli bulunmaktadır. Mevcut
+                    hataların giderilmesiyle birlikte, sitenin organik trafikte
+                    önemli bir artış yakalaması beklenmektedir.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="summary" class="bg-white p-6 rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-4">
+              Genel Site Sağlığı ve Hata Dağılımı
+            </h2>
+            <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
+              Yapılan denetimler, sitenin genel sağlığının %80 olduğunu, ancak
+              yine de müdahale gerektiren 18 kritik hata, 1.431 uyarı ve 1.308
+              ikaz barındırdığını ortaya koymaktadır.
+            </p>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-6xl mx-auto"
+            >
+              <div>
+                <img
+                  src="https://i.ibb.co/CsPR2Rdf/image.png"
+                  alt="Site Sağlık Skoru 80"
+                  class="rounded-lg shadow-md w-full"
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFFFFF/CCCCCC?text=Skor+G%C3%B6rseli+Y%C3%BCklenemedi';"
+                />
+              </div>
+              <div class="grid grid-cols-1 gap-6">
+                <div
+                  class="bg-red-50 border-l-4 border-red-400 p-6 rounded-lg text-center"
+                >
+                  <div
+                    class="text-red-600 text-sm font-bold uppercase tracking-wider"
+                  >
+                    Kritik Hatalar
+                  </div>
+                  <div
+                    id="animated-error-count"
+                    class="text-6xl font-extrabold text-red-700 my-2"
+                  >
+                    0
+                  </div>
+                  <p class="text-red-800 text-sm">
+                    Acil müdahale gerektiren sorunlar.
+                  </p>
+                </div>
+                <div
+                  class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg text-center"
+                >
+                  <div
+                    class="text-yellow-600 text-sm font-bold uppercase tracking-wider"
+                  >
+                    Uyarılar
+                  </div>
+                  <div
+                    id="animated-warning-count"
+                    class="text-6xl font-extrabold text-yellow-700 my-2"
+                  >
+                    0
+                  </div>
+                  <p class="text-yellow-800 text-sm">
+                    Orta öncelikli sorunlar.
+                  </p>
+                </div>
+                <div
+                  class="bg-sky-50 border-l-4 border-sky-400 p-6 rounded-lg text-center"
+                >
+                  <div
+                    class="text-sky-600 text-sm font-bold uppercase tracking-wider"
+                  >
+                    İkazlar
+                  </div>
+                  <div
+                    id="animated-notice-count"
+                    class="text-6xl font-extrabold text-sky-700 my-2"
+                  >
+                    0
+                  </div>
+                  <p class="text-sky-800 text-sm">
+                    Düşük öncelikli iyileştirmeler.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="performance-metrics"
+            class="bg-white p-6 rounded-2xl shadow-lg"
+          >
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-6">
+              SEO Performans Metrikleri
+            </h2>
+            <div class="max-w-6xl mx-auto">
+              <img
+                src="https://i.ibb.co/jvc36Sqy/image.png"
+                alt="Aylık Trafik Grafiği"
+                class="rounded-lg border border-gray-200 shadow-sm w-full"
+                onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFFFFF/CCCCCC?text=G%C3%B6rsel+Y%C3%BCklenemedi';"
+              />
+            </div>
+            <div
+              class="mt-8 p-6 bg-sky-50 rounded-lg border-l-4 border-sky-500"
+            >
+              <h3 class="text-xl font-bold text-sky-800 mb-2">
+                Grafik Yorumu:
+              </h3>
+              <div class="text-gray-700 space-y-2">
+                <p>
+                  Yukarıdaki grafik, sitenin organik trafik performansında
+                  önemli bir düşüşü göstermektedir. Ocak ayında yaklaşık
+                  <strong class="font-semibold text-gray-800">10.000</strong
+                  >'lik bir zirveye ulaşan trafik, takip eden aylarda istikrarlı
+                  bir şekilde azalarak şu anki
+                  <strong class="font-semibold text-gray-800">1.000</strong>
+                  ziyaretçi seviyelerine gerilemiştir. Bu durum, anahtar kelime
+                  sıralamalarında yaşanan kayıplara ve pazar payının rakiplere
+                  kaptırıldığına işaret etmektedir. Acil müdahale ile bu düşüş
+                  trendini tersine çevirmek mümkündür.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="pagespeed-panel"
+            class="bg-white p-8 rounded-2xl shadow-lg"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 class="text-2xl font-bold text-center text-[#006494] mb-4">
+                  Mobil Performans Skoru: 29
+                </h3>
+                <img
+                  src="https://i.ibb.co/bj96RfR4/image.png"
+                  alt="PageSpeed Mobil Skoru 29"
+                  class="rounded-lg border border-gray-200 shadow-sm w-full"
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x200/FFFFFF/CCCCCC?text=G%C3%B6rsel+Y%C3%BCklenemedi';"
+                />
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-[#006494] mb-4">
+                  Önemli Web Verileri Başarısız
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  29 gibi çok düşük bir mobil performans skoru, sitenin mobil
+                  cihazlarda yavaş bir deneyim sunduğunu göstermektedir.
+                  Siteniz, Google'ın en kritik kullanıcı deneyimi testi olan
+                  <strong class="font-semibold text-gray-700"
+                    >Önemli Web Verileri (Core Web Vitals)</strong
+                  >
+                  kriterlerini karşılayamamaktadır. Bu durum, hem mobil
+                  kullanıcıları kaybetmenize neden olur hem de Google
+                  sıralamalarınızı doğrudan olumsuz etkiler.
+                </p>
+                <img
+                  src="https://i.ibb.co/S7y6jxST/image.png"
+                  alt="Önemli Web Verileri Sorunu"
+                  class="rounded-lg border border-gray-200 shadow-sm w-full"
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x200/FFFFFF/CCCCCC?text=G%C3%B6rsel+Y%C3%BCklenemedi';"
+                />
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="technical-issues"
+            class="bg-white p-8 rounded-2xl shadow-lg"
+          >
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-8">
+              Kritik Teknik Sorunlar ve Detaylar
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div
+                class="p-6 bg-red-50 border-t-4 border-red-500 rounded-lg shadow-md"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="font-bold text-lg text-gray-800">
+                    Kırık İç Linkler
+                  </h3>
+                  <span
+                    class="text-xs font-bold text-red-700 bg-red-200 px-2 py-1 rounded-full"
+                    >YÜKSEK</span
+                  >
+                </div>
+                <p class="text-sm text-gray-600">
+                  Site içinde kullanıcıları ve Google'ı var olmayan sayfalara
+                  yönlendiren 8 adet link bulunmaktadır.
+                </p>
+              </div>
+              <div
+                class="p-6 bg-red-50 border-t-4 border-red-500 rounded-lg shadow-md"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="font-bold text-lg text-gray-800">
+                    Düşük Sayfa Hızı
+                  </h3>
+                  <span
+                    class="text-xs font-bold text-red-700 bg-red-200 px-2 py-1 rounded-full"
+                    >YÜKSEK</span
+                  >
+                </div>
+                <p class="text-sm text-gray-600">
+                  2 sayfa, kabul edilebilir standartların altında bir yükleme
+                  hızına sahiptir, bu da hemen çıkma oranını artırır.
+                </p>
+              </div>
+              <div
+                class="p-6 bg-yellow-50 border-t-4 border-yellow-500 rounded-lg shadow-md"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="font-bold text-lg text-gray-800">
+                    `nofollow` İç Linkler
+                  </h3>
+                  <span
+                    class="text-xs font-bold text-yellow-700 bg-yellow-200 px-2 py-1 rounded-full"
+                    >ORTA</span
+                  >
+                </div>
+                <p class="text-sm text-gray-600">
+                  Site içinde 653 link, Google'a "bu linki takip etme" komutu
+                  veriyor. Bu, SEO otoritesinin site içinde yayılmasını
+                  engeller.
+                </p>
+              </div>
+              <div
+                class="p-6 bg-yellow-50 border-t-4 border-yellow-500 rounded-lg shadow-md"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="font-bold text-lg text-gray-800">
+                    Eksik Meta Açıklamaları
+                  </h3>
+                  <span
+                    class="text-xs font-bold text-yellow-700 bg-yellow-200 px-2 py-1 rounded-full"
+                    >ORTA</span
+                  >
+                </div>
+                <p class="text-sm text-gray-600">
+                  Arama sonuçlarındaki tıklanma oranını etkileyen 68 sayfanın
+                  meta açıklaması eksiktir.
+                </p>
+              </div>
+              <div
+                class="p-6 bg-yellow-50 border-t-4 border-yellow-500 rounded-lg shadow-md"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="font-bold text-lg text-gray-800">
+                    Eksik Alt Metinler
+                  </h3>
+                  <span
+                    class="text-xs font-bold text-yellow-700 bg-yellow-200 px-2 py-1 rounded-full"
+                    >ORTA</span
+                  >
+                </div>
+                <p class="text-sm text-gray-600">
+                  Görsel SEO ve erişilebilirlik için kritik olan 350 resmin alt
+                  metni (alt text) bulunmamaktadır.
+                </p>
+              </div>
+              <div
+                class="p-6 bg-sky-50 border-t-4 border-sky-500 rounded-lg shadow-md"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="font-bold text-lg text-gray-800">
+                    Site Haritası Hatası
+                  </h3>
+                  <span
+                    class="text-xs font-bold text-sky-700 bg-sky-200 px-2 py-1 rounded-full"
+                    >DÜŞÜK</span
+                  >
+                </div>
+                <p class="text-sm text-gray-600">
+                  Google'a gönderilen site haritasında olmaması gereken bir
+                  sayfa bulunmaktadır.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section id="roadmap" class="bg-white p-8 rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center text-[#006494] mb-8">
+              Önceliklendirilmiş İyileştirme Yol Haritası
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div
+                class="p-6 bg-red-50 border-t-4 border-red-500 rounded-lg shadow-md"
+              >
+                <h3 class="text-2xl font-bold text-red-700 mb-4">
+                  ⚡️ Faz 1: Acil Teknik Düzeltmeler
+                </h3>
+                <p class="text-gray-600 mb-6">
+                  Kullanıcı deneyimini ve site sağlığını doğrudan etkileyen en
+                  yüksek öncelikli adımlar.
+                </p>
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-semibold text-gray-800">
+                      Link ve Hız Optimizasyonu
+                    </h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>Kırık iç linklerin (8) düzeltilmesi.</li>
+                      <li>Yavaş yüklenen 2 sayfanın hızlandırılması.</li>
+                      <li>
+                        Küçültülmemiş 219 JS/CSS dosyasının optimize edilmesi.
+                      </li>
+                      <li>Geçici yönlendirmelerin kalıcı hale getirilmesi.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">
+                      Temel SEO Ayarları
+                    </h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>Site haritasındaki hatalı sayfanın kaldırılması.</li>
+                      <li>Eksik H1 başlığı olan sayfanın düzeltilmesi.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="p-6 bg-yellow-50 border-t-4 border-yellow-500 rounded-lg shadow-md"
+              >
+                <h3 class="text-2xl font-bold text-yellow-700 mb-4">
+                  📈 Faz 2: İçerik ve Görünürlük
+                </h3>
+                <p class="text-gray-600 mb-6">
+                  Temeller atıldıktan sonra arama motoru görünürlüğünü ve
+                  tıklanma oranlarını artıracak adımlar.
+                </p>
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-semibold text-gray-800">
+                      İçerik Optimizasyonu
+                    </h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>
+                        Eksik meta açıklaması olan 68 sayfanın doldurulması.
+                      </li>
+                      <li>
+                        Resim alt metinleri eksik 350 görselin tamamlanması.
+                      </li>
+                      <li>Kopya başlık etiketlerinin özgünleştirilmesi.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">
+                      Site İçi Linkleme
+                    </h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>
+                        Nofollow içeren 653 iç linkin incelenip düzeltilmesi.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="p-6 bg-green-50 border-t-4 border-green-500 rounded-lg shadow-md"
+              >
+                <h3 class="text-2xl font-bold text-green-700 mb-4">
+                  🌱 Faz 3: Gelişmiş Optimizasyon
+                </h3>
+                <p class="text-gray-600 mb-6">
+                  Sıralamaları korumak ve sürekli büyümeyi sağlamak için devam
+                  edecek stratejiler.
+                </p>
+                <div class="space-y-4">
+                  <div>
+                    <h4 class="font-semibold text-gray-800">
+                      Teknik İyileştirmeler
+                    </h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>Parametreli URL'lerin incelenmesi.</li>
+                      <li>
+                        Engellenen 14 sayfanın taranabilir hale getirilmesi.
+                      </li>
+                      <li>Sahipsiz 15 sayfanın siteye dahil edilmesi.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">
+                      Geleceğe Yönelik Adımlar
+                    </h4>
+                    <ul
+                      class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1"
+                    >
+                      <li>`LLMS.txt` dosyasının eklenmesi.</li>
+                      <li>Düzenli takip ve raporlama.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="mt-12 border-t-2 border-gray-200 pt-8">
+          <div class="container mx-auto text-center text-gray-600">
+            <img
+              src="http://www.novavitamedia.com/wp-content/uploads/2025/03/itefrgqkqqwju1og6rkq.png"
+              alt="Nova Vita Media Logosu"
+              class="h-12 mx-auto mb-4"
+              onerror="this.onerror=null;this.style.display='none'"
+            />
+            <p class="text-sm">
+              Bu rapor
+              <strong class="font-semibold text-[#006494]"
+                >Nova Vita Media</strong
+              >
+              tarafından
+              <strong class="font-semibold text-[#0582CA]"
+                >probident.com.tr</strong
+              >
+              için özel olarak hazırlanmıştır.
+            </p>
+            <p class="text-xs text-gray-400 mt-2">
+              © 2025 Nova Vita Media. Tüm Hakları Saklıdır.
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const loginScreen = document.getElementById("login-screen");
+        const reportContent = document.getElementById("report-content");
+        const loginForm = document.getElementById("login-form");
+        const passwordInput = document.getElementById("password");
+        const errorMessage = document.getElementById("error-message");
+        const correctPassword = "2020";
+
+        reportContent.classList.add("hidden");
+
+        loginForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (passwordInput.value === correctPassword) {
+            errorMessage.textContent = "";
+            errorMessage.classList.add("hidden");
+
+            loginScreen.classList.add("opacity-0");
+
+            setTimeout(() => {
+              loginScreen.style.display = "none";
+              reportContent.classList.remove("hidden");
+              setTimeout(() => {
+                reportContent.classList.remove("opacity-0");
+                initializeChartsAndAnimations();
+              }, 50);
+            }, 700);
+          } else {
+            errorMessage.textContent = "Hatalı şifre. Lütfen tekrar deneyin.";
+            errorMessage.classList.remove("hidden");
+            loginForm.classList.add("animate-shake");
+            setTimeout(() => {
+              loginForm.classList.remove("animate-shake");
+            }, 500);
+          }
+        });
+
+        function animateValue(obj, start, end, duration, isPercent = false) {
+          let startTimestamp = null;
+          const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min(
+              (timestamp - startTimestamp) / duration,
+              1
+            );
+            let currentVal = Math.floor(progress * (end - start) + start);
+
+            if (end > 1000) {
+              let valInK = currentVal / 1000;
+              if (valInK < 10) {
+                currentVal = valInK.toFixed(1) + "K";
+              } else {
+                currentVal = Math.floor(valInK) + "K";
+              }
+            }
+
+            obj.innerHTML = isPercent
+              ? `${Math.floor(progress * (end - start) + start)}%`
+              : currentVal;
+
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            } else {
+              let finalVal = end;
+              if (end > 1000) {
+                finalVal = (end / 1000).toFixed(1).replace(".0", "") + "K";
+              }
+              obj.innerHTML = isPercent ? `${end}%` : finalVal;
+            }
+          };
+          window.requestAnimationFrame(step);
+        }
+
+        function initializeChartsAndAnimations() {
+          // Animate numbers
+          const errorCountEl = document.getElementById("animated-error-count");
+          const warningCountEl = document.getElementById(
+            "animated-warning-count"
+          );
+          const noticeCountEl = document.getElementById(
+            "animated-notice-count"
+          );
+
+          if (errorCountEl) animateValue(errorCountEl, 0, 18, 1500);
+          if (warningCountEl) animateValue(warningCountEl, 0, 1431, 1500);
+          if (noticeCountEl) animateValue(noticeCountEl, 0, 1308, 1500);
+        }
+      });
+    </script>
+  </body>
+</html>
